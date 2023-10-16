@@ -24,16 +24,17 @@ public class GameContainer extends JPanel {
     /**
      * States of a game when it ends. (game over)
      */
+    private static final int WORD = 0;
+    private static final int HINT = 1;
     private static final int WIN = 1;
     private static final int LOSE = -1;
     private static final int NONE = 0;
 
     /**
-     * The word that is to be guessed.<p>
-     * Example - <b>HELLO</b>
+     * The word and hint that is to be guessed.<p>
+     * Example - [<b>"HELLO", "Hint: Used as a greeting"</b>]
      */
-    private String word;
-    private String hint;
+    private String[] wordAndHint;
 
     /**
      * Word that has to be guessed.
@@ -44,6 +45,7 @@ public class GameContainer extends JPanel {
      *
      */
     private static final CLabel guessWord = new CLabel();
+    private static final CLabel wordHint = new CLabel();
 
     /**
      * Contains the displaying letters of the {@code guessWord}.<p>
@@ -78,6 +80,7 @@ public class GameContainer extends JPanel {
         hangmanHandler = new HangmanHandler(this);
 
         add(endLabel);
+        add(wordHint);
         add(guessWord);
         add(alphabetContainer);
 
@@ -92,10 +95,10 @@ public class GameContainer extends JPanel {
      */
     public void startWordGuessing(WordSettings settings) {
         if(!isVisible()) return;
-        word = WordGenerator.getRandom(settings);
+        wordAndHint = WordGenerator.getRandom(settings);
         fillers = null;
         updateText();
-        System.out.println(word);
+        System.out.println(Arrays.toString(wordAndHint));
     }
 
     /**
@@ -107,12 +110,16 @@ public class GameContainer extends JPanel {
         if(fillers == null) {
             // This will create an array which contains alphabets which
             // have been guessed and underscore for which have not been guessed.
-            fillers = new String[word.length()];
+            fillers = new String[wordAndHint[WORD].length()];
             Arrays.fill(fillers, "_");
         }
 
         // This will set the text of label adding space between the letters.
         guessWord.setText(String.join(" ", fillers));
+
+        // Set hint for the word
+        wordHint.setText(wordAndHint[HINT]);
+        wordHint.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - wordHint.getWidth())/2 - 20, 160);
 
         // To center the position relative to Alphabet Container
         guessWord.setLocation(
@@ -126,7 +133,7 @@ public class GameContainer extends JPanel {
     public void guessAlphabet(String alphabet) {
 
         // index of the alphabet in the word variable
-        int index = word.indexOf(alphabet);
+        int index = wordAndHint[WORD].indexOf(alphabet);
 
         // If the alphabet is not present the index will be -1 and
         // so the hangman will move to next stage and method is exited.
@@ -144,7 +151,7 @@ public class GameContainer extends JPanel {
         // of the same alphabet in word variable
         while (index != -1) {
             fillers[index] = alphabet;
-            index = word.indexOf(alphabet, index + 1);
+            index = wordAndHint[WORD].indexOf(alphabet, index + 1);
         }
 
         // Updates the displayed text (guessWord label)
@@ -196,7 +203,7 @@ public class GameContainer extends JPanel {
      * Reveals the word in {@code guessWord} label
      */
     private void showWord() {
-        System.arraycopy(word.split(""), 0, fillers, 0, word.length());
+        System.arraycopy(wordAndHint[WORD].split(""), 0, fillers, 0, wordAndHint[WORD].length());
         updateText();
     }
 

@@ -64,7 +64,7 @@ public class WordLengthSettings extends AbstractSettings {
     /**
      * Action Listener for the sliders to clamp values.
      */
-    private static record SliderClampEvent(CSlider minSlider, CSlider maxSlider)
+    private record SliderClampEvent(CSlider minSlider, CSlider maxSlider)
             implements ChangeListener {
 
         @Override

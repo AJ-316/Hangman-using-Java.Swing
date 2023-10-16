@@ -26,7 +26,7 @@ public class SettingsMenu extends JPanel {
      */
     private final LivesSettings livesSettings;
     private final VowelContainSettings vowelContainSettings;
-    private final VowelContainSettings vowelContainSetting2s;
+    private final HintsSettings hintsSettings;
 
     /**
      * Background Image for this menu.
@@ -49,7 +49,7 @@ public class SettingsMenu extends JPanel {
         setOpaque(false);
 
         // Background Image
-        menuBackground = new CLabel(Window.loadImage("Backgrounds/menuSeparator"));
+        menuBackground = new CLabel(Window.loadImage("Backgrounds/menuSeparator", Window.IMAGE_SCALE));
         menuBackground.setSize(Window.WIDTH, Window.HEIGHT);
         Window.PANE.add(menuBackground);
 
@@ -66,12 +66,12 @@ public class SettingsMenu extends JPanel {
         wordLengthSettings = new WordLengthSettings();
         livesSettings = new LivesSettings();
         vowelContainSettings = new VowelContainSettings();
-        vowelContainSetting2s = new VowelContainSettings();
+        hintsSettings = new HintsSettings();
 
         addSettingsPanel(wordLengthSettings,   125,  0,   0, 0, 0, 1);
         addSettingsPanel(livesSettings,        125,  0, 100, 1, 0, 1);
-        addSettingsPanel(vowelContainSettings,   0,  50,  0, 0, 1, 2);
-        addSettingsPanel(vowelContainSetting2s,   0,  50,  0, 0, 1, 2);
+        addSettingsPanel(vowelContainSettings,   0,  50,  0, 0, 1, 1);
+        addSettingsPanel(hintsSettings,          0,  130,  0, 1, 1, 1);
     }
 
     /**
@@ -102,7 +102,8 @@ public class SettingsMenu extends JPanel {
         return new WordSettings(
                 wordLengthSettings.getValue(0),
                 wordLengthSettings.getValue(1),
-                vowelContainSettings.getValue());
+                vowelContainSettings.getValue(),
+                hintsSettings.isHintsEnabled());
     }
 
     /**

@@ -65,7 +65,7 @@ public class Window extends JFrame {
      *       are added to the Window
      */
     public static void create(String bkgImageFile) {
-        CLabel backgroundImage = new CLabel(loadImage(bkgImageFile));
+        CLabel backgroundImage = new CLabel(loadImage(bkgImageFile, IMAGE_SCALE));
         backgroundImage.setSize(PANE.getPreferredSize());
         PANE.add(backgroundImage);
 
@@ -77,10 +77,10 @@ public class Window extends JFrame {
      * Loads an image and scales it to {@code IMAGE_SCALE} = {@value IMAGE_SCALE}
      * @return The scaled image as ImageIcon
      */
-    public static ImageIcon loadImage(String file) {
+    public static ImageIcon loadImage(String file, float scale) {
         try {
             BufferedImage img = ImageIO.read(Objects.requireNonNull(Window.class.getResource("/" + file + ".png")));
-            return new ImageIcon(img.getScaledInstance((int)(img.getWidth()*IMAGE_SCALE), (int)(img.getHeight()*IMAGE_SCALE),
+            return new ImageIcon(img.getScaledInstance((int)(img.getWidth()*scale), (int)(img.getHeight()*scale),
                     BufferedImage.SCALE_SMOOTH));
         } catch (IOException e) {
             e.printStackTrace();

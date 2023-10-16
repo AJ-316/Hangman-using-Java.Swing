@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d44a54ea-3964-47a3-8cd1-d1b266029e95" name="Changes" comment="" />
+    <list default="true" id="d44a54ea-3964-47a3-8cd1-d1b266029e95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/HintsSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/Files/englishWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Files/englishWords.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Files/englishWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Files/englishWords.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordSettings.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordSettings.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/HangmanHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/HangmanHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$BackButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$BackButtonEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomComponents/CButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/WordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/WordGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/WordSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/WordSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/HangmanHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/HangmanHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/WordLengthSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/WordLengthSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/Window.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +42,9 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.idea/modules.xml" root0="FORCE_HIGHLIGHTING" />
@@ -33,13 +62,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2FwSyXQEgxKnWWaYKXyz94PSen5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "D:/PROgraming/IdeaProjects/AJP_Microproject"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "D:/PROgraming/IdeaProjects/AJP_Microproject",
+    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -57,6 +89,7 @@
       <recent name="Logic" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="WindowPackage.MenuPackage.SettingsPanels" />
       <recent name="WindowPackage.WordParameters" />
       <recent name="WindowPackage" />
       <recent name="" />
@@ -96,5 +129,16 @@
       <updated>1697448694326</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

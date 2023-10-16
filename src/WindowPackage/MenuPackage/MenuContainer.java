@@ -5,6 +5,7 @@ import WindowPackage.GamePackage.GameContainer;
 import WindowPackage.Window;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -48,11 +49,11 @@ public class MenuContainer extends JPanel {
         mainMenu = new MainMenu();
         settingsMenu = new SettingsMenu();
 
-        back = new CButton("Main Menu");
+        back = new CButton("Main Menu", Color.WHITE, "small");
 
-        back.setIcon(Window.loadImage("ButtonIcons/back0"));
-        back.setRolloverIcon(Window.loadImage("ButtonIcons/back1"));
-        back.setPressedIcon(Window.loadImage("ButtonIcons/back2"));
+        back.setIcon(Window.loadImage("ButtonIcons/back0", Window.IMAGE_SCALE));
+        back.setRolloverIcon(Window.loadImage("ButtonIcons/back1", Window.IMAGE_SCALE));
+        back.setPressedIcon(Window.loadImage("ButtonIcons/back2", Window.IMAGE_SCALE));
         back.setSize(back.getPreferredSize());
         back.addActionListener(new BackButtonEvent());
 

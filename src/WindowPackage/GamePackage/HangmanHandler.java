@@ -61,7 +61,7 @@ public class HangmanHandler {
         container.setOpaque(false);
 
         for(int i = 0; i < count; i++) {
-            CLabel imageLabel = new CLabel(Window.loadImage(images + i));
+            CLabel imageLabel = new CLabel(Window.loadImage(images + i, Window.IMAGE_SCALE));
             container.add(imageLabel, Integer.toString(i));
         }
 

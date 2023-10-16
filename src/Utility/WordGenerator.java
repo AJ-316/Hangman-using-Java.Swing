@@ -7,10 +7,7 @@ import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * <u>Word Generator class:</u><br/>
@@ -27,9 +24,15 @@ public class WordGenerator {
     public static int MIN_WORD_LENGTH;
 
     /**
-     * Static ArrayList of words loaded from a file
+     * Characters that will separate word and different hints
      */
-    private static ArrayList<String> words;
+    public static String WORD_SEPARATOR = "=";
+    public static String HINTS_SEPARATOR = "\\+";
+
+    /**
+     * Static Hashmap of word:hints[] loaded from a file
+     */
+    private static HashMap<String, String[]> wordsAndHints;
 
     /**
      * Random class object used to generate a random index number
@@ -41,7 +44,7 @@ public class WordGenerator {
      * Initializes the variables, Reads and Stores the words from a file.
      */
     public static void init() {
-        words = new ArrayList<>();
+        wordsAndHints = new HashMap<>();
         random = new Random();
 
         try {
@@ -50,12 +53,28 @@ public class WordGenerator {
                     new FileReader("Resources/Files/englishWords.txt"));
 
             while((line = reader.readLine()) != null) {
-                words.add(line.toUpperCase());
-                if (MIN_WORD_LENGTH == 0)
-                    MIN_WORD_LENGTH = line.length();
 
-                MIN_WORD_LENGTH = Math.min(line.length(), MIN_WORD_LENGTH);
-                MAX_WORD_LENGTH = Math.max(line.length(), MAX_WORD_LENGTH);
+                String word;
+
+                try {
+                    String[] wordAndHint = line.split(WORD_SEPARATOR);
+                    word = wordAndHint[0].trim().toUpperCase();
+
+                    String[] hints = wordAndHint[1].split(HINTS_SEPARATOR);
+
+                    wordsAndHints.put(word, hints);
+
+                } catch (IndexOutOfBoundsException e) {
+                    System.err.println("Error while reading word and hints for line: \"" + line + "\"");
+                    e.printStackTrace();
+                    continue;
+                }
+
+                if (MIN_WORD_LENGTH == 0)
+                    MIN_WORD_LENGTH = word.length();
+
+                MIN_WORD_LENGTH = Math.min(word.length(), MIN_WORD_LENGTH);
+                MAX_WORD_LENGTH = Math.max(word.length(), MAX_WORD_LENGTH);
             }
 
             reader.close();
@@ -67,10 +86,11 @@ public class WordGenerator {
     }
 
     /**
-     * Gets a Random word using the {@code settings}.
+     * Gets a Random word and random hint using the {@code settings}.
      * @param settings Contains the filters for words to find
      */
-    public static String getRandom(WordSettings settings) {
+    public static String[] getRandom(WordSettings settings) {
+        ArrayList<String> words = new ArrayList<>(wordsAndHints.keySet());
         String word = words.get(random.nextInt(words.size()));
 
         if(word.length() > settings.getMaxLength() || word.length() < settings.getMinLength())
@@ -79,7 +99,14 @@ public class WordGenerator {
         if(!word.contains(settings.getWordFilter()))
             return getRandom(settings);
 
-        return word;
+        String[] wordAndHint = new String[] {word, ""};
+
+        if(settings.isHintsEnabled()) {
+            String[] hints = wordsAndHints.get(word);
+            wordAndHint[1] = "Hint: " + hints[random.nextInt(hints.length)];
+        }
+
+        return wordAndHint;
     }
 
     /**

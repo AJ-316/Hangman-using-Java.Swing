@@ -25,6 +25,17 @@ public class CButton extends JButton {
     }
 
     /**
+     * Calls the constructor - {@link CButton#CButton(String)}.
+     * Used when the button is used as an icon display.
+     * Manually set {@code foreground} color and {@code fontSize}.
+     */
+    public CButton(String text, Color foreground, String fontSize) {
+        this(text);
+        setForeground(foreground);
+        setFont(UIManager.getFont(fontSize));
+    }
+
+    /**
      * General {@code paintComponent} method with modification of graphics
      * for each button state.
      * @param g Graphics object (Not used in the overridden method)
@@ -33,11 +44,8 @@ public class CButton extends JButton {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if(getIcon() != null) {
-            setFont(UIManager.getFont("small"));
-            setForeground(Color.white);
+        if(getIcon() != null)
             return;
-        }
 
         if(!isEnabled()) {
             setForeground(Color.red);

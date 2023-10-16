@@ -25,7 +25,7 @@ public class MainMenu extends JPanel {
         setSize(Window.WIDTH, Window.HEIGHT);
         setOpaque(false);
 
-        CLabel titleImage = new CLabel(Window.loadImage("Backgrounds/title"));
+        CLabel titleImage = new CLabel(Window.loadImage("Backgrounds/title", Window.IMAGE_SCALE));
         add(titleImage);
 
         addButton("Play", 1, 100, new StateChangeButtonEvent(MenuState.GAME));
