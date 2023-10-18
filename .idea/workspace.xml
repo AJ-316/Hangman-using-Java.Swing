@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d44a54ea-3964-47a3-8cd1-d1b266029e95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/Files/englishWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Files/englishWords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Files/englishWords.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Files/englishWords.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomComponents/CButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/WordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/WordGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

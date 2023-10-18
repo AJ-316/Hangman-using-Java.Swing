@@ -11,6 +11,14 @@ import java.awt.*;
 
 public class CButton extends JButton {
 
+    private Color disabledColor = Color.gray;
+    private Color normalColor = Color.white;
+    private Color pressedColor = Color.lightGray;
+    private Color rolloverColor = CLabel.YELLOW;
+
+    private Font normalFont = UIManager.getFont("large");
+    private Font disabledFont = UIManager.getFont("strikethrough");
+
     /**
      * Calls the parent constructor - {@link JButton#JButton(String)}.
      * Few settings like border and font are set
@@ -43,23 +51,38 @@ public class CButton extends JButton {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         if(getIcon() != null)
             return;
 
-        if(!isEnabled()) {
-            setForeground(Color.red);
-            setFont(UIManager.getFont("strikethrough"));
-        } else
-            setFont(UIManager.getFont("large"));
+        UIManager.put("Button.disabledText", disabledColor);
 
-        if(model.isPressed())
-            setForeground(Color.lightGray);
-        else
-            setForeground(Color.white);
+        setForeground(model.isPressed() ? pressedColor : model.isRollover() ? rolloverColor : normalColor);
 
-        if(model.isRollover())
-            setFont(UIManager.getFont("underlineLarge"));
+        Font font = isEnabled() ? normalFont : disabledFont;
+        setFont(model.isRollover() || model.isPressed() ? UIManager.getFont("underlineLarge") : font);
     }
 
+    public void setDisabledColor(Color disabledColor) {
+        this.disabledColor = disabledColor;
+    }
+
+    public void setNormalColor(Color normalColor) {
+        this.normalColor = normalColor;
+    }
+
+    public void setPressedColor(Color pressedColor) {
+        this.pressedColor = pressedColor;
+    }
+
+    public void setRolloverColor(Color rolloverColor) {
+        this.rolloverColor = rolloverColor;
+    }
+
+    public void setNormalFont(Font normalFont) {
+        this.normalFont = normalFont;
+    }
+
+    public void setDisabledFont(Font disabledFont) {
+        this.disabledFont = disabledFont;
+    }
 }

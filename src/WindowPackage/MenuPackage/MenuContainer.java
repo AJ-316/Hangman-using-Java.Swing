@@ -55,7 +55,7 @@ public class MenuContainer extends JPanel {
         back.setRolloverIcon(Window.loadImage("ButtonIcons/back1", Window.IMAGE_SCALE));
         back.setPressedIcon(Window.loadImage("ButtonIcons/back2", Window.IMAGE_SCALE));
         back.setSize(back.getPreferredSize());
-        back.addActionListener(new BackButtonEvent());
+        back.addActionListener(new StateChangeButtonEvent(MenuState.MAIN_MENU, () -> back.setVisible(false)));
 
         add(mainMenu);
         add(settingsMenu);
@@ -63,7 +63,7 @@ public class MenuContainer extends JPanel {
 
         Window.PANE.add(this);
 
-        changeState(MenuState.MAIN);
+        changeState(MenuState.MAIN_MENU);
     }
 
     /**
@@ -72,27 +72,51 @@ public class MenuContainer extends JPanel {
      */
     public void changeState(MenuState state) {
 
-        boolean isStateGame = state.equals(MenuState.GAME);
-        boolean isStateMain = state.equals(MenuState.MAIN);
+        boolean isStateGameStart = state.equals(MenuState.GAME_START);
+        boolean isStateMainMenu = state.equals(MenuState.MAIN_MENU);
+        boolean isStateSettingMenu = state.equals(MenuState.SETTINGS_MENU);
 
-        GameContainer.instance.setVisible(isStateGame);
+        GameContainer.instance.setVisible(isStateGameStart);
         GameContainer.instance.startWordGuessing(instance.settingsMenu.getWordSettings());
         GameContainer.instance.setInitialLives(instance.settingsMenu.getLives());
 
-        instance.settingsMenu.setVisible(state.equals(MenuState.SETTINGS));
-        instance.mainMenu.setVisible(isStateMain);
-        instance.back.setVisible(!isStateMain);
+        instance.mainMenu.setVisible(isStateMainMenu);
+        instance.settingsMenu.setVisible(isStateSettingMenu);
+        instance.back.setVisible(!isStateMainMenu);
+    }
+
+//    /**
+//     * Action Listener for the {@code back} button.
+//     */
+//    private static class BackButtonEvent implements ActionListener {
+//
+//        @Override
+//        public void actionPerformed(ActionEvent e) {
+//            MenuContainer.instance.changeState(MenuState.MAIN_MENU);
+//        }
+//    }
+
+    /**
+     * Action Listener for the buttons that will change the {@code MenuState} to the specified state.
+     * @param postStateChangeAction a Runnable interface to run an action after the state has changed.
+     */
+    public record StateChangeButtonEvent(MenuState state, Runnable postStateChangeAction) implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            MenuContainer.instance.changeState(state);
+
+            if(postStateChangeAction == null) return;
+            postStateChangeAction.run();
+        }
     }
 
     /**
-     * Action Listener for the {@code back} button.
+     * Action Listener to exit the application.
      */
-    private static class BackButtonEvent implements ActionListener {
-
+    public static class ExitWindowEvent implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            MenuContainer.instance.changeState(MenuState.MAIN);
-            ((CButton)e.getSource()).setVisible(false);
+            System.exit(0);
         }
     }
 }

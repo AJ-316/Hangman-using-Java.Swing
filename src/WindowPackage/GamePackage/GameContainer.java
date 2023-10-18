@@ -1,8 +1,11 @@
 package WindowPackage.GamePackage;
 
+import CustomComponents.CButton;
 import CustomComponents.CLabel;
 import Utility.WordSettings;
 import Utility.WordGenerator;
+import WindowPackage.MenuPackage.MenuContainer;
+import WindowPackage.MenuPackage.MenuState;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -57,6 +60,7 @@ public class GameContainer extends JPanel {
      * Text that displays the WIN or LOSE state of player.
      */
     private final CLabel endLabel = new CLabel();
+    private final CButton retryButton = new CButton("Next Word");
     private AlphabetContainer alphabetContainer;
     private HangmanHandler hangmanHandler;
 
@@ -79,7 +83,13 @@ public class GameContainer extends JPanel {
         alphabetContainer = new AlphabetContainer();
         hangmanHandler = new HangmanHandler(this);
 
+        retryButton.addActionListener(new MenuContainer.StateChangeButtonEvent(MenuState.GAME_START, null));
+        retryButton.setSize(retryButton.getPreferredSize());
+        retryButton.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - retryButton.getWidth())/2,
+                Window.HEIGHT - retryButton.getHeight()*2);
+
         add(endLabel);
+        add(retryButton);
         add(wordHint);
         add(guessWord);
         add(alphabetContainer);
@@ -95,6 +105,7 @@ public class GameContainer extends JPanel {
      */
     public void startWordGuessing(WordSettings settings) {
         if(!isVisible()) return;
+        retryButton.setVisible(false);
         wordAndHint = WordGenerator.getRandom(settings);
         fillers = null;
         updateText();
@@ -247,6 +258,7 @@ public class GameContainer extends JPanel {
             }
         }
 
+        retryButton.setVisible(true);
         endLabel.setText(endText);
         endLabel.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - endLabel.getWidth())/2, 100);
         alphabetContainer.setEnabled(gameOverState == NONE);

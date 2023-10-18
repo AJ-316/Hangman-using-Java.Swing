@@ -62,6 +62,9 @@ public class WordGenerator {
 
                     String[] hints = wordAndHint[1].split(HINTS_SEPARATOR);
 
+                    for(int i = 0; i < hints.length; i++)
+                        hints[i] = hints[i].trim();
+
                     wordsAndHints.put(word, hints);
 
                 } catch (IndexOutOfBoundsException e) {
