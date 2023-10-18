@@ -28,7 +28,6 @@ buzzing = Continuous humming sound+ Noise of bees or insects
 buzzwords = Trendy jargon+ Popular phrases or terms
 caliph = Islamic leader+ Successor to Muhammad
 cobweb = Spider's creation+ Abandoned, dusty spiderweb
-cockiness = Overconfident attitude+ Excessive self-assuredness
 croquet = Lawn game+ Uses mallets and balls
 crypt = Underground burial chamber+ Secret or hidden place
 curacao = Liqueur flavor+ Bright blue cocktail ingredient
