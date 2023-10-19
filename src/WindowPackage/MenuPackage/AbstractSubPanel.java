@@ -1,18 +1,18 @@
-package WindowPackage.MenuPackage.SettingsPanels;
+package WindowPackage.MenuPackage;
 
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * <u>Abstract class</u><p>
- * Used to create Panels with same settings for readability.
+ * Used to create sub Panels within a menu panel.
  */
-public abstract class AbstractSettings extends JPanel {
+public abstract class AbstractSubPanel extends JPanel {
 
     /**
      * Sets - layout to GridBag and Opacity to false.
      */
-    protected AbstractSettings() {
+    protected AbstractSubPanel() {
         super(new GridBagLayout());
         setOpaque(false);
     }

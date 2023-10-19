@@ -3,6 +3,7 @@ package WindowPackage.MenuPackage.SettingsPanels;
 import CustomComponents.CLabel;
 import CustomComponents.CSlider;
 import Utility.WordGenerator;
+import WindowPackage.MenuPackage.AbstractSubPanel;
 
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -12,12 +13,12 @@ import javax.swing.event.ChangeListener;
  * This panel will have components that will take player input
  * and have the max length and min length of the next hangman word.
  */
-public class WordLengthSettings extends AbstractSettings {
+public class WordLengthSubPanel extends AbstractSubPanel {
 
     /**
      * Calls Parent constructor and adds the necessary components.
      */
-    public WordLengthSettings() {
+    public WordLengthSubPanel() {
         super();
 
         // Title

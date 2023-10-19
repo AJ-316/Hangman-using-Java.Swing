@@ -2,6 +2,7 @@ package WindowPackage.MenuPackage.SettingsPanels;
 
 import CustomComponents.CButton;
 import CustomComponents.CLabel;
+import WindowPackage.MenuPackage.AbstractSubPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,7 @@ import java.awt.event.ActionListener;
  * This panel will have components that will take player input and
  * Have any vowel or not, present in the next Hangman word.
  */
-public class VowelContainSettings extends AbstractSettings {
+public class VowelContainSubPanel extends AbstractSubPanel {
 
     /**
      * Contains all the vowel buttons - A,E,I,O,U
@@ -23,7 +24,7 @@ public class VowelContainSettings extends AbstractSettings {
     /**
      * Calls Parent constructor and adds the necessary components.
      */
-    public VowelContainSettings() {
+    public VowelContainSubPanel() {
         super();
 
         // Vowel Buttons

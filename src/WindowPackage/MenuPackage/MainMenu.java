@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
  * <u>Menu Class</u><p>
  * This class has the Initial Menu components.
  */
-public class MainMenu extends JPanel {
+public class MainMenu extends AbstractMenuPanel {
 
     /**
      * Calls parent constructor - {@link JPanel#JPanel(LayoutManager)}
@@ -20,14 +20,12 @@ public class MainMenu extends JPanel {
      * Sets the Opacity to false and adds necessary components.
      */
     public MainMenu() {
-        super(new GridBagLayout());
-        setSize(Window.WIDTH, Window.HEIGHT);
-        setOpaque(false);
+        super();
 
-        CLabel titleImage = new CLabel(Window.loadImage("Backgrounds/title", Window.IMAGE_SCALE));
-        add(titleImage);
+        addBkgImage("Backgrounds/title");
+        menuBackground.setLocation((Window.WIDTH - menuBackground.getWidth())/2, 75);
 
-        addButton("Play", 1, 100, new MenuContainer.StateChangeButtonEvent(MenuState.GAME_START, null));
+        addButton("Play", 1, 200, new MenuContainer.StateChangeButtonEvent(MenuState.GAME_MODE_MENU, null));
         addButton("Settings", 2, 10, new MenuContainer.StateChangeButtonEvent(MenuState.SETTINGS_MENU, null));
         addButton("Quit", 3, 10, new MenuContainer.ExitWindowEvent());
     }

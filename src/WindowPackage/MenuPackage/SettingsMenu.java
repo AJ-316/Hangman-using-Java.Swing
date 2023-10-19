@@ -12,31 +12,23 @@ import java.awt.*;
  * <u>Menu class</u><p>
  * This class has components which are used to set the word settings.
  */
-public class SettingsMenu extends JPanel {
+public class SettingsMenu extends AbstractMenuPanel {
 
     /**
      * {@code WordLengthSettings} panel containing the components to set
      * settings for word's length.
      */
-    private final WordLengthSettings wordLengthSettings;
+    private final WordLengthSubPanel wordLengthSettings;
 
     /**
      * {@code LivesSettings} panel containing the components to set
      * settings for player's chances to guess the word.
      */
-    private final LivesSettings livesSettings;
-    private final VowelContainSettings vowelContainSettings;
-    private final HintsSettings hintsSettings;
+    private final LivesSubPanel livesSettings;
+    private final VowelContainSubPanel vowelContainSettings;
+    private final HintsSubPanel hintsSettings;
 
-    /**
-     * Background Image for this menu.
-     */
-    private final CLabel menuBackground;
 
-    /**
-     * Title of this menu.
-     */
-    private final CLabel title;
 
     /**
      * Calls Parent constructor - {@link JPanel#JPanel(LayoutManager)}
@@ -44,55 +36,21 @@ public class SettingsMenu extends JPanel {
      * Then adds necessary components and {@code AbstractSettings} classes.
      */
     public SettingsMenu() {
-        super(new GridBagLayout());
-        setSize(Window.WIDTH, Window.HEIGHT);
-        setOpaque(false);
+        super();
 
-        // Background Image
-        menuBackground = new CLabel(Window.loadImage("Backgrounds/menuSeparator", Window.IMAGE_SCALE));
-        menuBackground.setSize(Window.WIDTH, Window.HEIGHT);
-        Window.PANE.add(menuBackground);
-
-        // Title
-        title = new CLabel();
-        title.setFont(UIManager.getFont("underlineLarge"));
-
-        Window.PANE.add(title);
-
-        title.setText("Settings");
-        title.setLocation(Window.WIDTH/2 - title.getPreferredSize().width/2, 50);
+        addBkgImage("Backgrounds/settingsMenuSeparator", Window.WIDTH, Window.HEIGHT);
+        addTitleText("Settings");
 
         // Setting Panels
-        wordLengthSettings = new WordLengthSettings();
-        livesSettings = new LivesSettings();
-        vowelContainSettings = new VowelContainSettings();
-        hintsSettings = new HintsSettings();
+        wordLengthSettings = new WordLengthSubPanel();
+        livesSettings = new LivesSubPanel();
+        vowelContainSettings = new VowelContainSubPanel();
+        hintsSettings = new HintsSubPanel();
 
-        addSettingsPanel(wordLengthSettings,   125,  0,   0, 0, 0, 1);
-        addSettingsPanel(livesSettings,        125,  0, 100, 1, 0, 1);
-        addSettingsPanel(vowelContainSettings,   0,  50,  0, 0, 1, 1);
-        addSettingsPanel(hintsSettings,          0,  130,  0, 1, 1, 1);
-    }
-
-    /**
-     * Adds a Setting panel with specified constraints.
-     * @param settings Setting panel to be added
-     * @param top Top padding of the panel
-     * @param bottom bottom padding of the panel
-     * @param right right padding of the panel
-     * @param gridX column of panel
-     * @param gridY row of panel
-     * @param gridW The number of columns panel will fit in.
-     */
-    private void addSettingsPanel(AbstractSettings settings, int top, int bottom, int right, int gridX, int gridY, int gridW) {
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.weightx = 0.5f;
-        constraints.weighty = 0.5f;
-        constraints.insets.set(top, 0, bottom, right);
-        constraints.gridx = gridX;
-        constraints.gridy = gridY;
-        constraints.gridwidth = gridW;
-        add(settings, constraints);
+        addSubPanel(wordLengthSettings,   125,    0,   0, 0, 0, 0, 1);
+        addSubPanel(livesSettings,        125,    0, 100, 0, 1, 0, 1);
+        addSubPanel(vowelContainSettings,   0,   50,   0, 0, 0, 1, 1);
+        addSubPanel(hintsSettings,          0,  130, 100, 0, 1, 1, 1);
     }
 
     /**
@@ -111,13 +69,6 @@ public class SettingsMenu extends JPanel {
      */
     public int getLives() {
         return livesSettings.getValue();
-    }
-
-    @Override
-    public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        menuBackground.setVisible(visible);
-        title.setVisible(visible);
     }
 
 }

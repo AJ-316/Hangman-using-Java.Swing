@@ -2,13 +2,14 @@ package WindowPackage.MenuPackage.SettingsPanels;
 
 import CustomComponents.CLabel;
 import CustomComponents.CSlider;
+import WindowPackage.MenuPackage.AbstractSubPanel;
 
 /**
  * <u>Settings class</u><p>
  * This panel will have components that will take player input
  * and have the amount of lives/chances to guess Hangman word.
  */
-public class LivesSettings extends AbstractSettings {
+public class LivesSubPanel extends AbstractSubPanel {
 
     /**
      * Max amount of Chances a player can have
@@ -18,7 +19,7 @@ public class LivesSettings extends AbstractSettings {
     /**
      * Calls Parent constructor and adds the necessary components.
      */
-    public LivesSettings() {
+    public LivesSubPanel() {
         super();
 
         // Title

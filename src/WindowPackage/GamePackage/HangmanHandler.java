@@ -1,7 +1,7 @@
 package WindowPackage.GamePackage;
 
 import CustomComponents.CLabel;
-import WindowPackage.MenuPackage.SettingsPanels.LivesSettings;
+import WindowPackage.MenuPackage.SettingsPanels.LivesSubPanel;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -90,7 +90,7 @@ public class HangmanHandler {
      */
     public int nextStage() {
         setStage(++currentStageIndex);
-        return currentStageIndex >= LivesSettings.TOTAL_LIVES ? -1 : currentStageIndex;
+        return currentStageIndex >= LivesSubPanel.TOTAL_LIVES ? -1 : currentStageIndex;
     }
 
     /**

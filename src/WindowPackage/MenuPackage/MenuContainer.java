@@ -22,15 +22,9 @@ public class MenuContainer extends JPanel {
      */
     public static final MenuContainer instance = new MenuContainer();
 
-    /**
-     * Main Menu Panel
-     */
     private MainMenu mainMenu;
-
-    /**
-     * Settings Menu Panel.
-     */
     private SettingsMenu settingsMenu;
+    private GameModeMenu gameModeMenu;
 
     /**
      * Back button to switch back to the {@code MainMenu} from any other {@code MenuState}.
@@ -48,17 +42,19 @@ public class MenuContainer extends JPanel {
 
         mainMenu = new MainMenu();
         settingsMenu = new SettingsMenu();
+        gameModeMenu = new GameModeMenu();
 
         back = new CButton("Main Menu", Color.WHITE, "small");
 
-        back.setIcon(Window.loadImage("ButtonIcons/back0", Window.IMAGE_SCALE));
-        back.setRolloverIcon(Window.loadImage("ButtonIcons/back1", Window.IMAGE_SCALE));
-        back.setPressedIcon(Window.loadImage("ButtonIcons/back2", Window.IMAGE_SCALE));
+        back.setIcon(Window.loadImage("ButtonIcons/backBtn", Window.IMAGE_SCALE));
+        back.setRolloverIcon(Window.loadImage("ButtonIcons/backBtn_rollover", Window.IMAGE_SCALE));
+        back.setPressedIcon(Window.loadImage("ButtonIcons/backBtn_pressed", Window.IMAGE_SCALE));
         back.setSize(back.getPreferredSize());
         back.addActionListener(new StateChangeButtonEvent(MenuState.MAIN_MENU, () -> back.setVisible(false)));
 
         add(mainMenu);
         add(settingsMenu);
+        add(gameModeMenu);
         add(back);
 
         Window.PANE.add(this);
@@ -73,28 +69,24 @@ public class MenuContainer extends JPanel {
     public void changeState(MenuState state) {
 
         boolean isStateGameStart = state.equals(MenuState.GAME_START);
+        boolean isStateGameModeMenu = state.equals(MenuState.GAME_MODE_MENU);
         boolean isStateMainMenu = state.equals(MenuState.MAIN_MENU);
         boolean isStateSettingMenu = state.equals(MenuState.SETTINGS_MENU);
 
+        // Pane Visibility
         GameContainer.instance.setVisible(isStateGameStart);
-        GameContainer.instance.startWordGuessing(instance.settingsMenu.getWordSettings());
-        GameContainer.instance.setInitialLives(instance.settingsMenu.getLives());
+        mainMenu.setVisible(isStateMainMenu);
+        settingsMenu.setVisible(isStateSettingMenu);
+        gameModeMenu.setVisible(isStateGameModeMenu);
 
-        instance.mainMenu.setVisible(isStateMainMenu);
-        instance.settingsMenu.setVisible(isStateSettingMenu);
-        instance.back.setVisible(!isStateMainMenu);
+        back.setVisible(!isStateMainMenu);
+
+        // Other Tasks
+        if(isStateGameStart) {
+            GameContainer.instance.startWordGuessing(settingsMenu.getWordSettings());
+            GameContainer.instance.setInitialLives(settingsMenu.getLives());
+        }
     }
-
-//    /**
-//     * Action Listener for the {@code back} button.
-//     */
-//    private static class BackButtonEvent implements ActionListener {
-//
-//        @Override
-//        public void actionPerformed(ActionEvent e) {
-//            MenuContainer.instance.changeState(MenuState.MAIN_MENU);
-//        }
-//    }
 
     /**
      * Action Listener for the buttons that will change the {@code MenuState} to the specified state.
