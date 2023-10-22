@@ -15,6 +15,9 @@ import java.util.Objects;
  */
 public class Window extends JFrame {
 
+    public static final Cursor PRESSED_CURSOR = Window.getCustomCursor("Icons/rolloverCursor");
+    public static final Cursor DEFAULT_CURSOR = Window.getCustomCursor("Icons/cursor");
+
     /**
      * Width of the JFrame (current main window)
      */
@@ -57,6 +60,8 @@ public class Window extends JFrame {
 
         MAIN.pack();
         MAIN.setLocationRelativeTo(null);
+
+//        MAIN.setCursor(DEFAULT_CURSOR);
     }
 
     /**
@@ -86,5 +91,13 @@ public class Window extends JFrame {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static Cursor getCustomCursor(String file) {
+        ImageIcon imageIcon = loadImage(file, 1);
+
+        assert imageIcon != null;
+        Image cursorImg = imageIcon.getImage();
+        return Toolkit.getDefaultToolkit().createCustomCursor(cursorImg, new Point(0, 0), file);
     }
 }

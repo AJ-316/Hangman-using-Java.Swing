@@ -1,12 +1,16 @@
 package CustomComponents;
 
+import Utility.AudioClip;
 import WindowPackage.Window;
+import com.sun.java.accessibility.util.SwingEventMonitor;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * <u>Custom Button class:</u><br/>
@@ -15,15 +19,16 @@ import java.awt.event.ActionListener;
 
 public class CButton extends JButton {
 
+
     public static final float ICON_SCALE = 0.15f;
-    private static final ImageIcon ROLLOVER_CHECKED = WindowPackage.Window.loadImage("ButtonIcons/check_rollover", ICON_SCALE);
-    private static final ImageIcon ROLLOVER_UNCHECKED = WindowPackage.Window.loadImage("ButtonIcons/uncheck_rollover", ICON_SCALE);
-    private static final ImageIcon CHECKED = WindowPackage.Window.loadImage("ButtonIcons/check", ICON_SCALE);
-    private static final ImageIcon UNCHECKED = Window.loadImage("ButtonIcons/uncheck", ICON_SCALE);
-    private static final ImageIcon RADIO_PRESSED = WindowPackage.Window.loadImage("ButtonIcons/radio_pressed", CButton.ICON_SCALE);
-    private static final ImageIcon RADIO_ROLLOVER_UNCHECKED = WindowPackage.Window.loadImage("ButtonIcons/radio_uncheck_rollover", CButton.ICON_SCALE);
-    private static final ImageIcon RADIO_CHECKED = WindowPackage.Window.loadImage("ButtonIcons/radio_check", CButton.ICON_SCALE);
-    private static final ImageIcon RADIO_UNCHECKED = Window.loadImage("ButtonIcons/radio_uncheck", CButton.ICON_SCALE);
+    private static final ImageIcon ROLLOVER_CHECKED = WindowPackage.Window.loadImage("Icons/check_rollover", ICON_SCALE);
+    private static final ImageIcon ROLLOVER_UNCHECKED = WindowPackage.Window.loadImage("Icons/uncheck_rollover", ICON_SCALE);
+    private static final ImageIcon CHECKED = WindowPackage.Window.loadImage("Icons/check", ICON_SCALE);
+    private static final ImageIcon UNCHECKED = Window.loadImage("Icons/uncheck", ICON_SCALE);
+    private static final ImageIcon RADIO_PRESSED = WindowPackage.Window.loadImage("Icons/radio_pressed", CButton.ICON_SCALE);
+    private static final ImageIcon RADIO_ROLLOVER_UNCHECKED = WindowPackage.Window.loadImage("Icons/radio_uncheck_rollover", CButton.ICON_SCALE);
+    private static final ImageIcon RADIO_CHECKED = WindowPackage.Window.loadImage("Icons/radio_check", CButton.ICON_SCALE);
+    private static final ImageIcon RADIO_UNCHECKED = Window.loadImage("Icons/radio_uncheck", CButton.ICON_SCALE);
 
     private Color disabledColor = Color.gray;
     private Color normalColor = Color.white;
@@ -36,6 +41,8 @@ public class CButton extends JButton {
     private boolean isRadio;
     private boolean isChecked;
 
+    private final static CButtonAudioListener audioListener = new CButtonAudioListener();
+
     /**
      * Calls the parent constructor - {@link JButton#JButton(String)}.
      * Few settings like border and font are set
@@ -47,6 +54,16 @@ public class CButton extends JButton {
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(10, 10, 10, 10));
         setFocusPainted(false);
+
+        setCursor(Window.PRESSED_CURSOR);
+
+        addMouseMotionListener(audioListener);
+        addMouseListener(audioListener);
+    }
+
+    public void silentClicks() {
+        removeMouseListener(audioListener);
+        removeMouseMotionListener(audioListener);
     }
 
     /**
@@ -173,6 +190,21 @@ public class CButton extends JButton {
 
         Font font = isEnabled() ? normalFont : disabledFont;
         setFont(model.isRollover() || model.isPressed() ? UIManager.getFont("underlineLarge") : font);
+    }
+
+    private static class CButtonAudioListener extends MouseAdapter {
+
+        public void mousePressed(MouseEvent e) {
+            super.mousePressed(e);
+            if(e.getButton() != MouseEvent.BUTTON1)
+                return;
+            AudioClip.getAudioClip("Press").play();
+        }
+
+        public void mouseEntered(MouseEvent e) {
+            super.mouseEntered(e);
+            AudioClip.getAudioClip("Over").play();
+        }
     }
 
     public void setDisabledColor(Color disabledColor) {

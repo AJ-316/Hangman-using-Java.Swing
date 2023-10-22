@@ -1,6 +1,7 @@
 package WindowPackage.GamePackage;
 
 import CustomComponents.CButton;
+import Utility.AudioClip;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -110,6 +111,8 @@ public class AlphabetContainer extends JPanel implements KeyListener {
                 break;
             }
         }
+
+        AudioClip.getAudioClip("Press").play();
     }
 
     /**

@@ -46,9 +46,9 @@ public class MenuContainer extends JPanel {
 
         back = new CButton("Main Menu", Color.WHITE, "small");
 
-        back.setIcon(Window.loadImage("ButtonIcons/backBtn", Window.IMAGE_SCALE));
-        back.setRolloverIcon(Window.loadImage("ButtonIcons/backBtn_rollover", Window.IMAGE_SCALE));
-        back.setPressedIcon(Window.loadImage("ButtonIcons/backBtn_pressed", Window.IMAGE_SCALE));
+        back.setIcon(Window.loadImage("Icons/backBtn", Window.IMAGE_SCALE));
+        back.setRolloverIcon(Window.loadImage("Icons/backBtn_rollover", Window.IMAGE_SCALE));
+        back.setPressedIcon(Window.loadImage("Icons/backBtn_pressed", Window.IMAGE_SCALE));
         back.setSize(back.getPreferredSize());
         back.addActionListener(new StateChangeButtonEvent(MenuState.MAIN_MENU, () -> back.setVisible(false)));
 

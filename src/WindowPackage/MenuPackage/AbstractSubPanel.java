@@ -1,5 +1,7 @@
 package WindowPackage.MenuPackage;
 
+import WindowPackage.Window;
+
 import javax.swing.*;
 import java.awt.*;
 

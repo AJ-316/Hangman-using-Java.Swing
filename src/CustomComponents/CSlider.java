@@ -1,10 +1,13 @@
 package CustomComponents;
 
+import Utility.AudioClip;
 import Utility.FontMetricsUtil;
+import WindowPackage.Window;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicSliderUI;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
@@ -40,6 +43,26 @@ public class CSlider extends JSlider {
         Dimension preferredSize = getPreferredSize();
         preferredSize.height += 20;
         setPreferredSize(preferredSize);
+
+        CSliderAudioListener audioListener = new CSliderAudioListener();
+        addMouseMotionListener(audioListener);
+        addMouseListener(audioListener);
+        setCursor(Window.PRESSED_CURSOR);
+    }
+
+    private static class CSliderAudioListener extends MouseAdapter {
+        public void mouseDragged(MouseEvent e) {
+            super.mouseDragged(e);
+            AudioClip clip = AudioClip.getAudioClip("Press");
+            if(!clip.isPlaying())
+                clip.play();
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            super.mouseEntered(e);
+            AudioClip.getAudioClip("Over").play();
+        }
     }
 
     public static class CSliderUI extends BasicSliderUI implements MouseMotionListener {
