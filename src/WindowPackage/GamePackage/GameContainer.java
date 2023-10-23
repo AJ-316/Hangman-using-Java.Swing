@@ -32,8 +32,6 @@ public class GameContainer extends JPanel {
     private static final int WIN = 1;
     private static final int LOSE = -1;
     private static final int NONE = 0;
-    private static final int SINGLE = 0;
-    private static final int MULTI = 1;
 
     /**
      * The word and hint that is to be guessed.<p>
@@ -57,8 +55,6 @@ public class GameContainer extends JPanel {
      * Example - {@code {"_", "_", "L", "L", "_"}}
      */
     private String[] fillers;
-
-    private int gameMode;
 
     /**
      * Text that displays the WIN or LOSE state of player.
@@ -267,9 +263,5 @@ public class GameContainer extends JPanel {
         endLabel.setText(endText);
         endLabel.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - endLabel.getWidth())/2, 100);
         alphabetContainer.setEnabled(gameOverState == NONE);
-    }
-
-    public void setGameMode(int gameMode) {
-        this.gameMode = gameMode;
     }
 }

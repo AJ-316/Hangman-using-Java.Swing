@@ -43,7 +43,6 @@ public class VowelContainSubPanel extends AbstractSubPanel {
         VowelButtonEvent vowelButtonEvent = new VowelButtonEvent();
 
         for (CButton vowel : vowels) {
-            System.out.println(vowel.getCursor());
             vowel.addActionListener(vowelButtonEvent);
             addComponent(vowel, gridX++, 1, 1, 30, 35, 0, 0);
         }

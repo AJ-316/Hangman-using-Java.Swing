@@ -46,7 +46,6 @@ public class AudioClip {
                     return;
 
                 InputStream is = AudioClip.class.getResourceAsStream("/audio/" + file + ".wav");
-                System.out.println(is);
                 assert is != null;
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(is);
                 DataLine.Info info = new DataLine.Info(Clip.class, audioInputStream.getFormat());

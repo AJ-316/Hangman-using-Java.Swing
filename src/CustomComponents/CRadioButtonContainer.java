@@ -16,10 +16,8 @@ public class CRadioButtonContainer {
         for(CButton button : newButtons) {
             button.setRadio(true);
             buttons.add(button);
-            CButton.CheckButtonEvent checkButtonEvent = (CButton.CheckButtonEvent) button.getActionListeners()[0];
-
-            checkButtonEvent.setEnabledAction(() -> checkButton(button));
-            checkButtonEvent.setDisabledAction(() -> button.setChecked(true));
+            button.getButtonEvent().addEnableAction(() -> checkButton(button));
+            button.getButtonEvent().addDisabledAction(() -> button.setChecked(true));
         }
 
         checkButton(buttons.get(0));

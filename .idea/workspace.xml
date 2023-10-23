@@ -4,48 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d44a54ea-3964-47a3-8cd1-d1b266029e95" name="Changes" comment="">
+    <list default="true" id="00d6056f-1911-49cc-a68e-32d22ebf74a3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModePanels/PlayerSettingsSubPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/backBtn.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/backBtn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/backBtn_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/backBtn_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/backBtn_rollover.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/backBtn_rollover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/check.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/check.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/check_rollover.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/check_rollover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/extra_radio_uncheck_rollover.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/extra_radio_uncheck_rollover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/radio_check.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/radio_check.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/radio_pressed.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/radio_pressed.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/radio_uncheck.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/radio_uncheck.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/radio_uncheck_rollover.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/radio_uncheck_rollover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/uncheck.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/uncheck.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/ButtonIcons/uncheck_rollover.png" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/Icons/uncheck_rollover.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/backBtn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/backBtn_pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/backBtn_rollover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/check_rollover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/extra_radio_uncheck_rollover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/radio_check.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/radio_pressed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/radio_uncheck.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/radio_uncheck_rollover.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/uncheck.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/ButtonIcons/uncheck_rollover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton$CButtonAudioListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton$CButtonAudioListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton$CheckButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton$CheckButtonEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CButton.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CSlider$CSliderUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CSlider$CSliderUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CSlider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CSlider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/AlphabetContainer$AlphabetButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/AlphabetContainer$AlphabetButtonEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/AlphabetContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/AlphabetContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CRadioButtonContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CRadioButtonContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/AudioClip.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/AudioClip.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractMenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractMenuPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/GameModeMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/GameModeMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/GameModePanels/ModeSelectionSubPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$ExitWindowEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$ExitWindowEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$StateChangeButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$StateChangeButtonEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuState.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel$VowelButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel$VowelButtonEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomComponents/CButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomComponents/CSlider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CSlider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/AlphabetContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/AlphabetContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomComponents/CRadioButtonContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CRadioButtonContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/AudioClip.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/AudioClip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractMenuPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModePanels/ModeSelectionSubPanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/VowelContainSubPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/Window.java" afterDir="false" />
     </list>
@@ -90,15 +75,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/PROgraming/IdeaProjects/AJP_Microproject/Resources",
-    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/AJP_Microproject/Resources&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PROgraming\IdeaProjects\AJP_Microproject\Resources" />
@@ -122,6 +107,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+    <configuration name="GridLayoutExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GridLayoutExample" />
+      <module name="AJP_Microproject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -139,12 +131,14 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.GridLayoutExample" />
       <item itemvalue="Application.ThreadGame" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GridLayoutExample" />
         <item itemvalue="Application.ThreadGame" />
       </list>
     </recent_temporary>
@@ -152,7 +146,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d44a54ea-3964-47a3-8cd1-d1b266029e95" name="Changes" comment="" />
+      <changelist id="00d6056f-1911-49cc-a68e-32d22ebf74a3" name="Changes" comment="" />
       <created>1697448694326</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * <u>Custom Button class:</u><br/>
@@ -42,6 +43,7 @@ public class CButton extends JButton {
     private boolean isChecked;
 
     private final static CButtonAudioListener audioListener = new CButtonAudioListener();
+    private CheckButtonEvent buttonEvent;
 
     /**
      * Calls the parent constructor - {@link JButton#JButton(String)}.
@@ -80,15 +82,14 @@ public class CButton extends JButton {
     /**
      * Calls the constructor - {@link CButton#CButton(String, Color, String)}.
      * Used when the button is used as checkbox.
-     * @param enabledAction Called when the button is checked
-     * @param disabledAction Called when the button is unchecked
      * @param defaultValue Is button checked or unchecked, initially
      */
-    public CButton(String text, Color foreground, String fontSize,
-                   Runnable enabledAction, Runnable disabledAction, boolean defaultValue) {
+    public CButton(String text, Color foreground, String fontSize, boolean defaultValue) {
         this(text, foreground, fontSize);
 
-        addActionListener(new CheckButtonEvent(enabledAction, disabledAction));
+        buttonEvent = new CheckButtonEvent();
+
+        addActionListener(buttonEvent);
 
         setChecked(defaultValue);
 
@@ -97,19 +98,19 @@ public class CButton extends JButton {
     }
 
     /**
-     * Calls the constructor - {@link CButton#CButton(String, Runnable, Runnable, boolean)}.<br/>
+     * Calls the constructor - {@link CButton#CButton(String, boolean)}.<br/>
      * Sets Default value for button actions, foreground and fontSize
      */
     public CButton(String text, boolean defaultValue) {
-        this(text, null, null, defaultValue);
+        this(text, CLabel.LIGHT_GRAY, "large", defaultValue);
     }
 
-    /**
-     * Calls the constructor - {@link CButton#CButton(String, Color, String, Runnable, Runnable, boolean)}.
-     * Sets Default value for foreground and fontSize
-     */
-    public CButton(String text, Runnable enabledAction, Runnable disabledAction, boolean defaultValue) {
-        this(text, CLabel.LIGHT_GRAY, "large", enabledAction, disabledAction, defaultValue);
+    public CheckButtonEvent getButtonEvent() {
+        if(buttonEvent == null) {
+            buttonEvent = new CheckButtonEvent();
+            addActionListener(buttonEvent);
+        }
+        return buttonEvent;
     }
 
     /**
@@ -117,12 +118,34 @@ public class CButton extends JButton {
      */
     public static class CheckButtonEvent implements ActionListener {
 
-        private Runnable enabledAction;
-        private Runnable disabledAction;
+        private final ArrayList<Runnable> enabledAction;
+        private final ArrayList<Runnable> disabledAction;
 
-        public CheckButtonEvent(Runnable enabledAction, Runnable disabledAction) {
-            this.enabledAction = enabledAction;
-            this.disabledAction = disabledAction;
+        public CheckButtonEvent() {
+            this.enabledAction = new ArrayList<>();
+            this.disabledAction = new ArrayList<>();
+        }
+
+        public void addEnableAction(Runnable action) {
+            enabledAction.add(action);
+        }
+
+        public void addDisabledAction(Runnable action) {
+            disabledAction.add(action);
+        }
+
+        private void runEnabledAction() {
+            if(enabledAction.size() == 0) return;
+
+            for (Runnable runnable : enabledAction)
+                runnable.run();
+        }
+
+        private void runDisabledAction() {
+            if(disabledAction.size() == 0) return;
+
+            for (Runnable runnable : disabledAction)
+                runnable.run();
         }
 
         @Override
@@ -132,31 +155,13 @@ public class CButton extends JButton {
             if (btnClicked.isChecked) {
 
                 btnClicked.setChecked(false);
-                if(disabledAction != null)
-                    disabledAction.run();
+                runDisabledAction();
 
                 return;
             }
 
             btnClicked.setChecked(true);
-            if(enabledAction != null)
-                enabledAction.run();
-        }
-
-        public Runnable getEnabledAction() {
-            return enabledAction;
-        }
-
-        public void setEnabledAction(Runnable enabledAction) {
-            this.enabledAction = enabledAction;
-        }
-
-        public Runnable getDisabledAction() {
-            return disabledAction;
-        }
-
-        public void setDisabledAction(Runnable disabledAction) {
-            this.disabledAction = disabledAction;
+            runEnabledAction();
         }
     }
 

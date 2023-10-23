@@ -22,10 +22,14 @@ public abstract class AbstractMenuPanel extends JPanel {
     protected CLabel menuTitle;
     protected CLabel menuBackground;
 
-    public AbstractMenuPanel() {
-        super(new GridBagLayout());
+    public AbstractMenuPanel(LayoutManager manager) {
+        super(manager);
         setSize(WindowPackage.Window.WIDTH, Window.HEIGHT);
         setOpaque(false);
+    }
+
+    public AbstractMenuPanel() {
+        this(new GridBagLayout());
     }
 
     protected void addBkgImage(String bkgImgPath, int... size) {

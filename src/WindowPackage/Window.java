@@ -61,7 +61,7 @@ public class Window extends JFrame {
         MAIN.pack();
         MAIN.setLocationRelativeTo(null);
 
-//        MAIN.setCursor(DEFAULT_CURSOR);
+        MAIN.setCursor(DEFAULT_CURSOR);
     }
 
     /**

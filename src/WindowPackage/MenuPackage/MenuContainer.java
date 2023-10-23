@@ -25,6 +25,7 @@ public class MenuContainer extends JPanel {
     private MainMenu mainMenu;
     private SettingsMenu settingsMenu;
     private GameModeMenu gameModeMenu;
+    private ScoreboardMenu scoreboardMenu;
 
     /**
      * Back button to switch back to the {@code MainMenu} from any other {@code MenuState}.
@@ -43,6 +44,7 @@ public class MenuContainer extends JPanel {
         mainMenu = new MainMenu();
         settingsMenu = new SettingsMenu();
         gameModeMenu = new GameModeMenu();
+        scoreboardMenu = new ScoreboardMenu();
 
         back = new CButton("Main Menu", Color.WHITE, "small");
 
@@ -55,6 +57,7 @@ public class MenuContainer extends JPanel {
         add(mainMenu);
         add(settingsMenu);
         add(gameModeMenu);
+        add(scoreboardMenu);
         add(back);
 
         Window.PANE.add(this);
@@ -70,6 +73,7 @@ public class MenuContainer extends JPanel {
 
         boolean isStateGameStart = state.equals(MenuState.GAME_START);
         boolean isStateGameModeMenu = state.equals(MenuState.GAME_MODE_MENU);
+        boolean isStateScoreboardMenu = state.equals(MenuState.SCOREBOARD_MENU);
         boolean isStateMainMenu = state.equals(MenuState.MAIN_MENU);
         boolean isStateSettingMenu = state.equals(MenuState.SETTINGS_MENU);
 
@@ -78,6 +82,7 @@ public class MenuContainer extends JPanel {
         mainMenu.setVisible(isStateMainMenu);
         settingsMenu.setVisible(isStateSettingMenu);
         gameModeMenu.setVisible(isStateGameModeMenu);
+        scoreboardMenu.setVisible(isStateScoreboardMenu);
 
         back.setVisible(!isStateMainMenu);
 
