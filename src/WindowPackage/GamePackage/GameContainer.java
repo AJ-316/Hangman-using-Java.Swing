@@ -2,10 +2,12 @@ package WindowPackage.GamePackage;
 
 import CustomComponents.CButton;
 import CustomComponents.CLabel;
-import Utility.WordSettings;
 import Utility.WordGenerator;
 import WindowPackage.MenuPackage.MenuContainer;
 import WindowPackage.MenuPackage.MenuState;
+import WindowPackage.MenuPackage.ScoreboardPanels.ScoreTableSubPanel;
+import WindowPackage.MenuPackage.ScoreboardPanels.ScoreboardMenu;
+import WindowPackage.MenuPackage.WordInputMenu;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -60,10 +62,16 @@ public class GameContainer extends JPanel {
      * Text that displays the WIN or LOSE state of player.
      */
     private final CLabel endLabel = new CLabel();
-    private final CButton retryButton = new CButton("Next Word");
+    private final CButton nextRoundButton = new CButton("");
+    private MenuState nextBtnState;
 
     private AlphabetContainer alphabetContainer;
     private HangmanHandler hangmanHandler;
+    private final WordInputMenu wordInputMenu;
+    private ScoreboardMenu scoreboardMenu;
+
+    private int gameCounter;
+    private boolean isMultiPlayer;
 
     /**
      * Sets Layout null by calling parent constructor - {@link JPanel#JPanel(LayoutManager)}.
@@ -73,6 +81,9 @@ public class GameContainer extends JPanel {
         super(null);
         setOpaque(false);
         setSize(Window.WIDTH, Window.HEIGHT);
+
+        wordInputMenu = new WordInputMenu();
+        scoreboardMenu = new ScoreboardMenu();
     }
 
     /**
@@ -84,13 +95,10 @@ public class GameContainer extends JPanel {
         alphabetContainer = new AlphabetContainer();
         hangmanHandler = new HangmanHandler(this);
 
-        retryButton.addActionListener(new MenuContainer.StateChangeButtonEvent(MenuState.GAME_START, null));
-        retryButton.setSize(retryButton.getPreferredSize());
-        retryButton.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - retryButton.getWidth())/2,
-                Window.HEIGHT - retryButton.getHeight()*2);
+        nextRoundButton.addActionListener((e) -> MenuContainer.instance.changeState(nextBtnState));
 
         add(endLabel);
-        add(retryButton);
+        add(nextRoundButton);
         add(wordHint);
         add(guessWord);
         add(alphabetContainer);
@@ -100,17 +108,52 @@ public class GameContainer extends JPanel {
         setVisible(false);
     }
 
+    private void setNextRoundButton(String text, MenuState state) {
+        nextRoundButton.setText(text);
+        nextRoundButton.setSize(nextRoundButton.getPreferredSize());
+        nextRoundButton.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - nextRoundButton.getWidth())/2,
+                Window.HEIGHT - nextRoundButton.getHeight()*2);
+
+        nextBtnState = state;
+
+        if(nextRoundButton.getActionListeners().length == 0) {
+            nextRoundButton.addActionListener((e) -> MenuContainer.instance.changeState(nextBtnState));
+        }
+
+        nextRoundButton.setVisible(true);
+    }
+
+    private void startWordGuessing(String[] wordAndHint) {
+        if(!isVisible()) return;
+        nextRoundButton.setVisible(false);
+        this.wordAndHint = wordAndHint;
+        fillers = null;
+        updateText();
+        System.out.println(Arrays.toString(wordAndHint));
+    }
+
+
     /**
      * Finds a word through {@code WordGenerator} class and {@code WordSettings} class
      * and assigns it to {@code word} variable. Then {@code guessWord} label's text is updated.
      */
-    public void startWordGuessing(WordSettings settings) {
-        if(!isVisible()) return;
-        retryButton.setVisible(false);
-        wordAndHint = WordGenerator.getRandom(settings);
-        fillers = null;
-        updateText();
-        System.out.println(Arrays.toString(wordAndHint));
+    public void start(String[] playerNames, boolean isMultiPlayer) {
+        wordInputMenu.init(playerNames);
+        this.isMultiPlayer = isMultiPlayer;
+
+        if(!isMultiPlayer) {
+            startWordGuessing(WordGenerator.getRandom(MenuContainer.instance.getWordSettings()));
+            return;
+        }
+
+        if(gameCounter == -1) {
+            gameCounter = 0;
+            scoreboardMenu.createScoreboard();
+            MenuContainer.instance.changeState(MenuState.WORD_INPUT_MENU);
+            return;
+        }
+
+        startWordGuessing(new String[] {wordInputMenu.getWord(), "Word Selector: " + playerNames[getPlayerIndex()]});
     }
 
     /**
@@ -130,7 +173,7 @@ public class GameContainer extends JPanel {
         guessWord.setText(String.join(" ", fillers));
 
         // Set hint for the word
-        wordHint.setText(wordAndHint[HINT]);
+        wordHint.setText(wordAndHint[HINT] == null ? "" : wordAndHint[HINT]);
         wordHint.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - wordHint.getWidth())/2 - 20, 160);
 
         // To center the position relative to Alphabet Container
@@ -241,17 +284,19 @@ public class GameContainer extends JPanel {
 
         String endText = "";
 
+        setNextRoundButton("Next Word", MenuState.GAME_START);
+
         switch (gameOverState) {
             case WIN -> {
                 hangmanHandler.setFace(HangmanHandler.HangmanFace.LAUGH);
                 guessWord.setForeground(CLabel.GREEN);
-                endText = "GUESSED IT RIGHT!";
+                endText = updateScoreboard(false);
             }
             case LOSE -> {
                 hangmanHandler.setFace(HangmanHandler.HangmanFace.DIE);
                 guessWord.setForeground(CLabel.RED);
                 showWord();
-                endText = "BETTER LUCK NEXT TIME!";
+                endText = updateScoreboard(true);
             }
             case NONE -> {
                 hangmanHandler.setFace(HangmanHandler.HangmanFace.NULL);
@@ -259,9 +304,50 @@ public class GameContainer extends JPanel {
             }
         }
 
-        retryButton.setVisible(true);
         endLabel.setText(endText);
         endLabel.setLocation(alphabetContainer.getX() + (alphabetContainer.getWidth() - endLabel.getWidth())/2, 100);
         alphabetContainer.setEnabled(gameOverState == NONE);
+    }
+
+    private String updateScoreboard(boolean isWinner) {
+        if(!isMultiPlayer) return isWinner ? "BETTER LUCK NEXT TIME!" : "GUESSED IT RIGHT!";
+
+        ScoreTableSubPanel scoreTable = scoreboardMenu.getScoreTable();
+        String playerName = wordInputMenu.getPlayerNames()[getPlayerIndex()];
+
+        scoreTable.setRound(getRound());
+        scoreTable.setPlayerScore(playerName, wordAndHint[WORD], isWinner);
+
+        setNextRoundButton("Next Round", MenuState.WORD_INPUT_MENU);
+
+        if(gameCounter >= MenuContainer.instance.getPlayerSettingsMenu().getTotalRounds() * wordInputMenu.getPlayerCount() - 1) {
+            setNextRoundButton("Scoreboard", MenuState.SCOREBOARD_MENU);
+            scoreTable.calcTotalScore();
+        }
+
+        gameCounter++;
+        return String.format("%s %s", playerName, isWinner ? "Won!" : "Lost!");
+    }
+
+    public int getRound() {
+        return (gameCounter + wordInputMenu.getPlayerCount()) / wordInputMenu.getPlayerCount();
+    }
+
+    public int getPlayerIndex() {
+        System.out.println("Getting player Index: " + ((gameCounter - (getRound() - 1) * wordInputMenu.getPlayerCount()) - 1) + ", round: " + getRound() + ", counter i: " + gameCounter);
+        System.out.println("half: " + (gameCounter - (getRound() - 1) * wordInputMenu.getPlayerCount()) + ", round: " + getRound() + ", counter i: " + gameCounter);
+        return gameCounter - (getRound() - 1) * wordInputMenu.getPlayerCount();
+    }
+
+    public void resetGameCounter() {
+        gameCounter = -1;
+    }
+
+    public WordInputMenu getWordInputMenu() {
+        return wordInputMenu;
+    }
+
+    public ScoreboardMenu getScoreboardMenu() {
+        return scoreboardMenu;
     }
 }

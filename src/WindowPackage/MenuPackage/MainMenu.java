@@ -1,8 +1,8 @@
 package WindowPackage.MenuPackage;
 
 import CustomComponents.CButton;
-import CustomComponents.CLabel;
 import WindowPackage.Window;
+import WindowPackage.MenuPackage.MenuContainer.StateChangeButtonEvent;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,9 +25,16 @@ public class MainMenu extends AbstractMenuPanel {
         addBkgImage("Backgrounds/title");
         menuBackground.setLocation((Window.WIDTH - menuBackground.getWidth())/2, 75);
 
-        addButton("Play", 1, 200, new MenuContainer.StateChangeButtonEvent(MenuState.GAME_MODE_MENU, null));
-        addButton("Settings", 2, 10, new MenuContainer.StateChangeButtonEvent(MenuState.SETTINGS_MENU, null));
-        addButton("Quit", 3, 10, new MenuContainer.ExitWindowEvent());
+        StateChangeButtonEvent singlePlayer = new StateChangeButtonEvent(MenuState.GAME_START);
+        singlePlayer.setPreStateChangeAction(() -> MenuContainer.instance.getPlayerSettingsMenu().setMultiPlayer(false));
+
+        StateChangeButtonEvent multiPlayer = new StateChangeButtonEvent(MenuState.PLAYER_SETTINGS_MENU);
+        multiPlayer.setPreStateChangeAction(() -> MenuContainer.instance.getPlayerSettingsMenu().setMultiPlayer(true));
+
+        addButton("SinglePlayer", 1, 200, singlePlayer);
+        addButton("MultiPlayer", 2, 10, multiPlayer);
+        addButton("Settings", 3, 10, new StateChangeButtonEvent(MenuState.SETTINGS_MENU));
+        addButton("Quit", 4, 10, new MenuContainer.ExitWindowEvent());
     }
 
     /**
@@ -38,7 +45,6 @@ public class MainMenu extends AbstractMenuPanel {
      * @param actionListener Action Listener that is to be added to the button.
      */
     private void addButton(String text, int gridY, int top, ActionListener actionListener) {
-        GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets.set(top, 0, 10, 0);
         constraints.gridy = gridY;
 

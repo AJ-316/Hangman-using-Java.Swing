@@ -21,11 +21,13 @@ public abstract class AbstractMenuPanel extends JPanel {
 
     protected CLabel menuTitle;
     protected CLabel menuBackground;
+    protected GridBagConstraints constraints;
 
     public AbstractMenuPanel(LayoutManager manager) {
         super(manager);
         setSize(WindowPackage.Window.WIDTH, Window.HEIGHT);
         setOpaque(false);
+        constraints = new GridBagConstraints();
     }
 
     public AbstractMenuPanel() {
@@ -40,10 +42,12 @@ public abstract class AbstractMenuPanel extends JPanel {
     }
 
     protected void addTitleText(String text) {
-        menuTitle = new CLabel();
-        Window.PANE.add(menuTitle);
+        if(menuTitle == null) {
+            menuTitle = new CLabel();
+            Window.PANE.add(menuTitle);
+            menuTitle.setFont(UIManager.getFont("underlineLarge"));
+        }
 
-        menuTitle.setFont(UIManager.getFont("underlineLarge"));
         menuTitle.setText(text);
         menuTitle.setLocation(Window.WIDTH/2 - menuTitle.getPreferredSize().width/2, 50);
     }

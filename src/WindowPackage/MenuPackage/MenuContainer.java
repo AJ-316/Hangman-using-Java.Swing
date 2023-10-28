@@ -1,7 +1,10 @@
 package WindowPackage.MenuPackage;
 
 import CustomComponents.CButton;
+import Utility.WordSettings;
 import WindowPackage.GamePackage.GameContainer;
+import WindowPackage.MenuPackage.PlayerSettingsPanels.PlayerSettingsMenu;
+import WindowPackage.MenuPackage.SettingsPanels.SettingsMenu;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -24,13 +27,12 @@ public class MenuContainer extends JPanel {
 
     private MainMenu mainMenu;
     private SettingsMenu settingsMenu;
-    private GameModeMenu gameModeMenu;
-    private ScoreboardMenu scoreboardMenu;
+    private PlayerSettingsMenu playerSettingsMenu;
 
     /**
      * Back button to switch back to the {@code MainMenu} from any other {@code MenuState}.
      */
-    private CButton back;
+    private CButton backBtn;
 
     /**
      * Sets layout, size and opacity.
@@ -43,26 +45,37 @@ public class MenuContainer extends JPanel {
 
         mainMenu = new MainMenu();
         settingsMenu = new SettingsMenu();
-        gameModeMenu = new GameModeMenu();
-        scoreboardMenu = new ScoreboardMenu();
+        playerSettingsMenu = new PlayerSettingsMenu();
 
-        back = new CButton("Main Menu", Color.WHITE, "small");
+        backBtn = new CButton("Main Menu", Color.WHITE, "small");
 
-        back.setIcon(Window.loadImage("Icons/backBtn", Window.IMAGE_SCALE));
-        back.setRolloverIcon(Window.loadImage("Icons/backBtn_rollover", Window.IMAGE_SCALE));
-        back.setPressedIcon(Window.loadImage("Icons/backBtn_pressed", Window.IMAGE_SCALE));
-        back.setSize(back.getPreferredSize());
-        back.addActionListener(new StateChangeButtonEvent(MenuState.MAIN_MENU, () -> back.setVisible(false)));
+        backBtn.setIcon(Window.loadImage("Icons/backBtn", Window.IMAGE_SCALE));
+        backBtn.setRolloverIcon(Window.loadImage("Icons/backBtn_rollover", Window.IMAGE_SCALE));
+        backBtn.setPressedIcon(Window.loadImage("Icons/backBtn_pressed", Window.IMAGE_SCALE));
+        backBtn.setSize(backBtn.getPreferredSize());
+
+        StateChangeButtonEvent backBtnEvent = new StateChangeButtonEvent(MenuState.MAIN_MENU);
+        backBtnEvent.setPostStateChangeAction(() -> backBtn.setVisible(false));
+        backBtn.addActionListener(backBtnEvent);
 
         add(mainMenu);
         add(settingsMenu);
-        add(gameModeMenu);
-        add(scoreboardMenu);
-        add(back);
+        add(playerSettingsMenu);
+        add(GameContainer.instance.getWordInputMenu());
+        add(GameContainer.instance.getScoreboardMenu());
+        add(backBtn);
 
         Window.PANE.add(this);
 
         changeState(MenuState.MAIN_MENU);
+    }
+
+    public WordSettings getWordSettings() {
+        return settingsMenu.getWordSettings();
+    }
+
+    public PlayerSettingsMenu getPlayerSettingsMenu() {
+        return playerSettingsMenu;
     }
 
     /**
@@ -72,38 +85,64 @@ public class MenuContainer extends JPanel {
     public void changeState(MenuState state) {
 
         boolean isStateGameStart = state.equals(MenuState.GAME_START);
-        boolean isStateGameModeMenu = state.equals(MenuState.GAME_MODE_MENU);
-        boolean isStateScoreboardMenu = state.equals(MenuState.SCOREBOARD_MENU);
-        boolean isStateMainMenu = state.equals(MenuState.MAIN_MENU);
-        boolean isStateSettingMenu = state.equals(MenuState.SETTINGS_MENU);
+        boolean isStateWordInputMenu = state.equals(MenuState.WORD_INPUT_MENU);
+        boolean isStatePlayerSettingsMenu = state.equals(MenuState.PLAYER_SETTINGS_MENU);
 
         // Pane Visibility
         GameContainer.instance.setVisible(isStateGameStart);
-        mainMenu.setVisible(isStateMainMenu);
-        settingsMenu.setVisible(isStateSettingMenu);
-        gameModeMenu.setVisible(isStateGameModeMenu);
-        scoreboardMenu.setVisible(isStateScoreboardMenu);
+        mainMenu.setVisible(state.equals(MenuState.MAIN_MENU));
+        settingsMenu.setVisible(state.equals(MenuState.SETTINGS_MENU));
+        playerSettingsMenu.setVisible(isStatePlayerSettingsMenu);
+        GameContainer.instance.getScoreboardMenu().setVisible(state.equals(MenuState.SCOREBOARD_MENU));
+        GameContainer.instance.getWordInputMenu().setVisible(isStateWordInputMenu);
 
-        back.setVisible(!isStateMainMenu);
+        // Back button visibility
+        backBtn.setVisible(!mainMenu.isVisible());
 
         // Other Tasks
         if(isStateGameStart) {
-            GameContainer.instance.startWordGuessing(settingsMenu.getWordSettings());
+            GameContainer.instance.start(playerSettingsMenu.getPlayerNames(), playerSettingsMenu.isMultiPlayer());
             GameContainer.instance.setInitialLives(settingsMenu.getLives());
         }
+
+        if(isStateWordInputMenu)
+            GameContainer.instance.getWordInputMenu().setRound(GameContainer.instance.getPlayerIndex(), GameContainer.instance.getRound());
+
+        if(mainMenu.isVisible())
+            GameContainer.instance.resetGameCounter();
     }
 
     /**
      * Action Listener for the buttons that will change the {@code MenuState} to the specified state.
-     * @param postStateChangeAction a Runnable interface to run an action after the state has changed.
+     * postStateChangeAction a Runnable interface to run an action after the state has changed.
      */
-    public record StateChangeButtonEvent(MenuState state, Runnable postStateChangeAction) implements ActionListener {
+    public static class StateChangeButtonEvent implements ActionListener {
+
+        private Runnable preStateChangeAction;
+        private Runnable postStateChangeAction;
+        private final MenuState state;
+
+        public StateChangeButtonEvent(MenuState state) {
+            this.state = state;
+        }
+
+        public void setPreStateChangeAction(Runnable action) {
+            preStateChangeAction = action;
+        }
+
+        public void setPostStateChangeAction(Runnable action) {
+            postStateChangeAction = action;
+        }
+
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(preStateChangeAction != null)
+                preStateChangeAction.run();
+
             MenuContainer.instance.changeState(state);
 
-            if(postStateChangeAction == null) return;
-            postStateChangeAction.run();
+            if(postStateChangeAction != null)
+                postStateChangeAction.run();
         }
     }
 

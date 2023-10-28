@@ -4,6 +4,7 @@ import WindowPackage.Window;
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
+import javax.swing.plaf.basic.BasicBorders;
 import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.io.*;
@@ -133,6 +134,21 @@ public class WordGenerator {
         UIManager.put("strikethrough", large.deriveFont(attributes));
 
         UIManager.put("Button.disabledText", new ColorUIResource(Color.GRAY));
+
+        configTooltip();
+    }
+
+    private static void configTooltip() {
+        UIManager.put("ToolTip.background", Color.darkGray);
+        UIManager.put("ToolTip.foreground", Color.white);
+        UIManager.put("ToolTip.font", UIManager.getFont("large"));
+        UIManager.put("ToolTip.border", BorderFactory.createLineBorder(Color.white, 2, true));
+        ToolTipManager.sharedInstance().setInitialDelay(0);
+    }
+
+    public static void printUIManagerKeys() {
+        for (Object key : Collections.list(UIManager.getDefaults().keys()))
+            System.out.println(key);
     }
 
 }

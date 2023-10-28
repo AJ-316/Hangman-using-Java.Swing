@@ -11,12 +11,15 @@ import java.awt.*;
  */
 public abstract class AbstractSubPanel extends JPanel {
 
+    protected GridBagConstraints constraints;
+
     /**
      * Sets - layout to GridBag and Opacity to false.
      */
     protected AbstractSubPanel() {
         super(new GridBagLayout());
         setOpaque(false);
+        constraints = new GridBagConstraints();
     }
 
     /**

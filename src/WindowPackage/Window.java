@@ -15,6 +15,7 @@ import java.util.Objects;
  */
 public class Window extends JFrame {
 
+    public static final Cursor TEXT_CURSOR = Window.getCustomCursor("Icons/cursorText");
     public static final Cursor PRESSED_CURSOR = Window.getCustomCursor("Icons/rolloverCursor");
     public static final Cursor DEFAULT_CURSOR = Window.getCustomCursor("Icons/cursor");
 

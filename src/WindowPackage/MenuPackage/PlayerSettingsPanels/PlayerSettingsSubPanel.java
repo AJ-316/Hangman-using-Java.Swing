@@ -1,7 +1,8 @@
-package WindowPackage.MenuPackage.GameModePanels;
+package WindowPackage.MenuPackage.PlayerSettingsPanels;
 
 import CustomComponents.CButton;
 import CustomComponents.CLabel;
+import CustomComponents.CTextField;
 import WindowPackage.MenuPackage.AbstractSubPanel;
 import WindowPackage.Window;
 
@@ -29,17 +30,17 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
     };
 
     private static final int MAX_PLAYERS = 4;
-    private final ArrayList<JPanel> playerNamePanels;
-    private final GridBagConstraints constraints;
+    private static final int MIN_PLAYERS = 2;
+    protected final ArrayList<JPanel> playerNamePanels;
 
     private final CButton addBtn;
     private final CButton removeBtn;
 
     private int currentPlayerIndex;
+    protected boolean isMultiPlayer;
 
     public PlayerSettingsSubPanel() {
         super();
-        constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.CENTER;
         playerNamePanels = new ArrayList<>();
 
@@ -48,6 +49,7 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
 
         createPlayerPanels();
 
+        addPlayerPanel(null);
         addPlayerPanel(null);
     }
 
@@ -69,6 +71,7 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
 
         constraints.gridx = 0;
         constraints.gridy = currentPlayerIndex;
+        playerNamePanels.get(currentPlayerIndex).getComponent(1).setEnabled(true); // enable text field
         add(playerNamePanels.get(currentPlayerIndex), constraints);
         setButtons(currentPlayerIndex);
 
@@ -79,11 +82,12 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
 
     private void removePlayerPanel(ActionEvent e) {
         currentPlayerIndex--;
-        if(currentPlayerIndex < 0) {
-            currentPlayerIndex = 0;
+        if(currentPlayerIndex < MIN_PLAYERS) {
+            currentPlayerIndex = MIN_PLAYERS;
             return;
         }
 
+        playerNamePanels.get(currentPlayerIndex).getComponent(1).setEnabled(false); // disable text field
         remove(playerNamePanels.get(currentPlayerIndex));
         setButtons(currentPlayerIndex-1);
 
@@ -96,10 +100,12 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
             JPanel panel = new JPanel();
             panel.setOpaque(false);
 
-            CLabel label = new CLabel("Player " + (playerNamePanels.size() + 1));
+            CLabel label = new CLabel("Player " + (playerNamePanels.size() + 1) + ": ", CLabel.YELLOW);
             label.setVerticalAlignment(CLabel.BOTTOM);
             label.setHorizontalAlignment(CLabel.CENTER);
-            JTextField field = new JTextField(label.getText());
+
+            CTextField field = new CTextField("Enter Name...");
+            field.setEnabled(false);
 
             panel.add(label);
             panel.add(field);
@@ -113,12 +119,13 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
 
     private void setButtons(int playerIndex) {
         constraints.gridy = playerIndex;
-        removeBtn.setEnabled(playerIndex != 0);
+        removeBtn.setEnabled(playerIndex != MIN_PLAYERS - 1);
         addBtn.setEnabled(playerIndex != MAX_PLAYERS - 1);
 
         constraints.gridx = 1;
         add(addBtn, constraints);
         constraints.gridx = 2;
         add(removeBtn, constraints);
+
     }
 }

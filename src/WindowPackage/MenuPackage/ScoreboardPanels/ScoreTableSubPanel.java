@@ -5,6 +5,7 @@ import WindowPackage.MenuPackage.AbstractSubPanel;
 import WindowPackage.Window;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,90 +15,67 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
 
     private static final ImageIcon DIVIDER_COL_IMG = Window.loadImage("Icons/dividerCol", Window.IMAGE_SCALE);
     private static final ImageIcon DIVIDER_ROW_IMG = Window.loadImage("Icons/dividerRow", Window.IMAGE_SCALE);
-    private int roundsPlayed;
+    private int currentRoundIndex;
     private int dividerPtr;
 
-    private HashMap<String, CLabel[]> rowData;
-    private GridBagConstraints constraints;
+    private HashMap<String, CLabel[]> tableData;
 
     public ScoreTableSubPanel() {
         super();
     }
 
-    public void addScore(String winnerPlayer, String word) {
-        updateColumnData(winnerPlayer, roundsPlayed, "1");
-        resetRowData(roundsPlayed, "0", winnerPlayer);
-        progressRound(word);
-    }
+    public void calcTotalScore() {
+        int i = 0;
+        int[] totalScores = new int[tableData.size()-1];
 
-    private void progressRound(String word) {
-        updateColumnData("Rounds", roundsPlayed, String.valueOf(roundsPlayed));
-        System.out.println(rowData.get("Rounds")[roundsPlayed].getText());
-        updateColumnData("Word", roundsPlayed, word);
-        roundsPlayed++;
-    }
+        for(String column : tableData.keySet()) {
+            if(column.equals("Rounds")) continue;
+            for(CLabel scoreLabel : tableData.get(column)) {
+                System.out.println(column);
+                totalScores[i] += Integer.parseInt(scoreLabel.getText());
+            }
+            i++;
+        }
 
-    private void resetTable(String value) {
-        for(String column : rowData.keySet()) {
-            resetColumnData(column, value);
+        constraints.gridx = 0;
+        constraints.gridy = currentRoundIndex+3;
+        CLabel totalLabel = new CLabel("Total =", CLabel.YELLOW);
+        add(totalLabel, constraints);
+
+        i = 1;
+        for(int score : totalScores) {
+            constraints.gridx = i++ * 2;
+            add(new CLabel(String.valueOf(score), CLabel.YELLOW), constraints);
         }
     }
 
-    private void resetRowData(int rowIndex, String value, String exceptColumn) {
-        for(String column : rowData.keySet()) {
-            if(exceptColumn != null && (column.equals(exceptColumn) || column.equals("Rounds") || column.equals("Word")))
-                continue;
-            rowData.get(column)[rowIndex].setText(value);
-        }
+    public void setRound(int round) {
+        currentRoundIndex = round - 1;
+        tableData.get("Rounds")[currentRoundIndex].setText(String.valueOf(round));
     }
 
-    private void resetColumnData(String column, String value) {
-        for (CLabel label : rowData.get(column)) {
-            label.setText(value);
-        }
+    public void setPlayerScore(String playerName, String word, boolean isWinner) {
+        System.out.printf("%s %s at round %d for word %s, index[%d]%n",
+                playerName, isWinner ? "wins" : "loses", currentRoundIndex, word, currentRoundIndex);
+
+        CLabel scoreLabel = tableData.get(playerName)[currentRoundIndex];
+        scoreLabel.setToolTipText(word);
+        scoreLabel.setRollover(null);
+
+        scoreLabel.setForeground(CLabel.RED);
+        scoreLabel.setText("0");
+
+        if(!isWinner) return;
+        scoreLabel.setForeground(CLabel.GREEN);
+        scoreLabel.setText("1");
     }
-
-    private void updateColumnData(String column, int rowIndex, String value) {
-        rowData.get(column)[rowIndex].setText(value);
-    }
-
-    public ArrayList<CLabel> getPlayerLabels(String... playerNames) {
-        ArrayList<CLabel> labels = new ArrayList<>();
-        for(String name : playerNames)
-            labels.add(new CLabel(name, CLabel.YELLOW));
-        return labels;
-    }
-
-/*private void addRow(String... rowData) {
-    int totalRounds = ((int[]) playersScore.values().toArray()[0]).length; // col count
-    int totalPlayers = playersScore.size(); // row count
-
-    constraints.gridy++;
-    constraints.gridx = -1;
-    System.out.println("new y: " + constraints.gridy);
-
-    for(String cellData : rowData) {
-
-        constraints.gridx++;
-        constraints.gridwidth = 1;
-        constraints.gridheight = 1;
-        constraints.weightx = 1f/totalPlayers;
-        constraints.weighty = 1f/totalRounds;
-
-        CLabel cellLabel = new CLabel(cellData);
-        add(cellLabel, constraints);
-        System.out.println("added label: " + constraints.gridx);
-        addDivider(totalRounds);
-    }
-}*/
 
     private void addHeader(CLabel... labels) {
-        int totalRounds = ((CLabel[]) rowData.values().toArray()[0]).length + 2; // col count
+        int totalRounds = ((CLabel[]) tableData.values().toArray()[0]).length + 3; // col count
         int totalPlayers = labels.length; // row count
 
         constraints.gridy++;
         constraints.gridx = -1;
-        System.out.println(Arrays.toString(labels));
         for(CLabel label : labels) {
             constraints.gridx++;
             constraints.gridwidth = 1;
@@ -120,17 +98,14 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
     }
 
     public void initTable(int rounds, ArrayList<CLabel> playerLabels) {
-        rowData = new HashMap<>();
-        constraints = new GridBagConstraints();
+        tableData = new HashMap<>();
 
         playerLabels.add(0, new CLabel("Rounds", CLabel.YELLOW));
-        playerLabels.add(new CLabel("Word", CLabel.YELLOW));
 
-        rowData.put("Rounds", getEmptyLabelsArray(rounds));
-        rowData.put("Word", getEmptyLabelsArray(rounds));
+        tableData.put("Rounds", getEmptyLabelsArray(rounds));
 
         for(CLabel playerLabel : playerLabels) {
-            rowData.put(playerLabel.getText(), getEmptyLabelsArray(rounds));
+            tableData.put(playerLabel.getText(), getEmptyLabelsArray(rounds));
         }
 
         // Headers | Columns
@@ -141,18 +116,20 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
         for(int i = 0; i < rowDivider.length; i++)
             rowDivider[i] = new CLabel(DIVIDER_ROW_IMG);
         addHeader(rowDivider);
+
         // Rows
         for (int i = 0; i < playerLabels.size(); i++)
-            addRowData(i, playerLabels.get(i).getText());
+            addColData(i, playerLabels.get(i).getText());
     }
 
-    private void addRowData(int columnIndex, String columnName) {
-        CLabel[] scores = rowData.get(columnName);
+    private void addColData(int columnIndex, String columnName) {
+        CLabel[] scores = tableData.get(columnName);
         constraints.gridy = 1;
-        constraints.weighty = 1;
+        constraints.anchor = GridBagConstraints.NORTH;
+        constraints.weighty = 0;
 
         for (CLabel score : scores) {
-            constraints.gridx = columnIndex*2;
+            constraints.gridx = columnIndex * 2;
             constraints.gridy++;
             add(score, constraints);
         }
@@ -164,7 +141,7 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
         if(--dividerPtr < 0) return;
 
         constraints.gridheight = cols;
-        constraints.weighty = 1;
+        constraints.weighty = 0;
 
         CLabel dividerLabel = new CLabel(DIVIDER_COL_IMG);
         add(dividerLabel, constraints);

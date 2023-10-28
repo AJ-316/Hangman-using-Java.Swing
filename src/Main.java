@@ -11,9 +11,8 @@ public class Main {
         // Reads and Stores a list of English words
         WordGenerator.init();
         AudioClip.init();
-
         // This creates a JFrame
-        Window.init("Hangman in javax.swing (Advaitya01, Mizab06, Raj55, Rizwan63)");
+        Window.init("Hangman in javax.swing");
         GameContainer.instance.init();
         MenuContainer.instance.init();
         Window.create("Backgrounds/board");

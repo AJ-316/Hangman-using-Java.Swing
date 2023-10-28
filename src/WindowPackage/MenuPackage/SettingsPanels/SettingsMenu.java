@@ -1,7 +1,8 @@
-package WindowPackage.MenuPackage;
+package WindowPackage.MenuPackage.SettingsPanels;
 
 import CustomComponents.CLabel;
 import Utility.WordSettings;
+import WindowPackage.MenuPackage.AbstractMenuPanel;
 import WindowPackage.MenuPackage.SettingsPanels.*;
 import WindowPackage.Window;
 

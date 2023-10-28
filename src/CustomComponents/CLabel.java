@@ -2,6 +2,9 @@ package CustomComponents;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * <u>Custom Label class:</u><p>
@@ -14,6 +17,8 @@ public class CLabel extends JLabel {
     public static final Color RED = new Color(216, 66, 66);
     public static final Color GREEN = new Color(81, 199, 90);
     public static final Color LIGHT_GRAY = new Color(167, 167, 167);
+
+    private RolloverListener rolloverListener;
 
     public CLabel() {
         this("");
@@ -74,5 +79,67 @@ public class CLabel extends JLabel {
     public void setIcon(Icon icon) {
         super.setIcon(icon);
         setSize(getPreferredSize());
+    }
+
+    private static class RolloverListener extends MouseAdapter {
+
+        private Color rollover;
+        private Color color;
+
+        public RolloverListener(Color rollover, Color color) {
+            setColor(color);
+            setRollover(rollover);
+        }
+
+        public void mouseEntered(MouseEvent e) {
+            super.mouseEntered(e);
+            ((CLabel) e.getSource()).changeForeground(rollover);
+        }
+
+        public void mouseExited(MouseEvent e) {
+            super.mouseEntered(e);
+            ((CLabel) e.getSource()).changeForeground(color);
+        }
+
+        public void setRollover(Color rollover) {
+            if(rollover == null) {
+                setRollover(0.7f);
+                return;
+            }
+            this.rollover = rollover;
+        }
+
+        public void setRollover(float scale) {
+            this.rollover = new Color(
+                    Math.max(Math.min((int) (color.getRed()*scale), 255), 0),
+                    Math.max(Math.min((int) (color.getGreen()*scale), 255), 0),
+                    Math.max(Math.min((int) (color.getBlue()*scale), 255), 0));
+        }
+
+        public void setColor(Color color) {
+            this.color = color;
+        }
+    }
+
+    @Override
+    public void setForeground(Color fg) {
+        super.setForeground(fg);
+
+        if(rolloverListener != null)
+            rolloverListener.color = fg;
+    }
+
+    private void changeForeground(Color color) {
+        super.setForeground(color);
+    }
+
+    public void setRollover(Color color) {
+        if(rolloverListener == null) {
+            rolloverListener = new RolloverListener(color, getForeground());
+            addMouseListener(rolloverListener);
+            return;
+        }
+
+        rolloverListener.setRollover(color);
     }
 }
