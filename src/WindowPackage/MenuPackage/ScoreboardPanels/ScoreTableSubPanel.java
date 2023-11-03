@@ -5,7 +5,6 @@ import WindowPackage.MenuPackage.AbstractSubPanel;
 import WindowPackage.Window;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,7 +30,6 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
         for(String column : tableData.keySet()) {
             if(column.equals("Rounds")) continue;
             for(CLabel scoreLabel : tableData.get(column)) {
-                System.out.println(column);
                 totalScores[i] += Integer.parseInt(scoreLabel.getText());
             }
             i++;
@@ -62,11 +60,9 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
         scoreLabel.setToolTipText(word);
         scoreLabel.setRollover(null);
 
-        scoreLabel.setForeground(CLabel.RED);
         scoreLabel.setText("0");
 
         if(!isWinner) return;
-        scoreLabel.setForeground(CLabel.GREEN);
         scoreLabel.setText("1");
     }
 
@@ -98,9 +94,10 @@ public class ScoreTableSubPanel extends AbstractSubPanel {
     }
 
     public void initTable(int rounds, ArrayList<CLabel> playerLabels) {
+        removeAll();
         tableData = new HashMap<>();
 
-        playerLabels.add(0, new CLabel("Rounds", CLabel.YELLOW));
+        playerLabels.add(0, new CLabel("Rounds"));
 
         tableData.put("Rounds", getEmptyLabelsArray(rounds));
 

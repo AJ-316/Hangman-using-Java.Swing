@@ -4,6 +4,7 @@ import CustomComponents.CButton;
 import CustomComponents.CLabel;
 import CustomComponents.CTextField;
 import WindowPackage.MenuPackage.AbstractSubPanel;
+import WindowPackage.MenuPackage.ScoreboardPanels.ScoreboardMenu;
 import WindowPackage.Window;
 
 import javax.swing.*;
@@ -100,7 +101,7 @@ public class PlayerSettingsSubPanel extends AbstractSubPanel {
             JPanel panel = new JPanel();
             panel.setOpaque(false);
 
-            CLabel label = new CLabel("Player " + (playerNamePanels.size() + 1) + ": ", CLabel.YELLOW);
+            CLabel label = new CLabel("Player " + (playerNamePanels.size() + 1) + ": ", ScoreboardMenu.PLAYER_COLORS[playerNamePanels.size()]);
             label.setVerticalAlignment(CLabel.BOTTOM);
             label.setHorizontalAlignment(CLabel.CENTER);
 

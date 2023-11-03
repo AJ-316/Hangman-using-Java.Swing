@@ -48,10 +48,10 @@ public class SettingsMenu extends AbstractMenuPanel {
         vowelContainSettings = new VowelContainSubPanel();
         hintsSettings = new HintsSubPanel();
 
-        addSubPanel(wordLengthSettings,   125,    0,   0, 0, 0, 0, 1);
-        addSubPanel(livesSettings,        125,    0, 100, 0, 1, 0, 1);
-        addSubPanel(vowelContainSettings,   0,   50,   0, 0, 0, 1, 1);
-        addSubPanel(hintsSettings,          0,  130, 100, 0, 1, 1, 1);
+        addSubPanel(wordLengthSettings,   80,  0, 150, 0, 0, 0, 1);
+        addSubPanel(livesSettings,        80,  0, 100, 0, 1, 0, 1);
+        addSubPanel(vowelContainSettings, 80,  10, 140, 0, 0, 1, 1);
+        addSubPanel(hintsSettings,        0,  0, 170, 0, 1, 1, 1);
     }
 
     /**

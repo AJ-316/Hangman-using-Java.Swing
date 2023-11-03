@@ -8,6 +8,7 @@ import WindowPackage.MenuPackage.MenuContainer;
 import WindowPackage.MenuPackage.MenuState;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -18,18 +19,18 @@ public class PlayerSettingsMenu extends AbstractMenuPanel {
 
     private final PlayerSettingsSubPanel settingsSubPanel;
 
-    private final CButton startBtn;
     private final CTextField roundsField;
 
     public PlayerSettingsMenu() {
         super();
 
         addTitleText("Select Game Mode");
+        setTitlePadding(50);
 
         settingsSubPanel = new PlayerSettingsSubPanel();
-        addSubPanel(settingsSubPanel, 100, 0, 0, 0, 0, 0, 1);
+        addSubPanel(settingsSubPanel, 50, 0, 0, 0, 0, 0, 1);
 
-        startBtn = new CButton("Start");
+        CButton startBtn = new CButton("Start");
         startBtn.addActionListener(new MenuContainer.StateChangeButtonEvent(MenuState.GAME_START));
 
         JPanel roundsPanel = new JPanel();
@@ -41,11 +42,10 @@ public class PlayerSettingsMenu extends AbstractMenuPanel {
         roundsField.getInsets().set(0,0,0,0);
         roundsPanel.add(roundsField);
 
-        constraints.gridy = 1;
+        constraints.gridy = 2;
         add(roundsPanel, constraints);
 
-        constraints.gridy = 2;
-        constraints.insets.bottom = 200;
+        constraints.gridy = 3;
         add(startBtn, constraints);
     }
 

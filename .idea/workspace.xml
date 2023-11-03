@@ -6,38 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="00d6056f-1911-49cc-a68e-32d22ebf74a3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AJP_Microproject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Hangman_in_swing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Untitled.pdn" beforeDir="false" afterPath="$PROJECT_DIR$/Untitled.pdn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CLabel$RolloverListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CLabel$RolloverListener.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CLabel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CTextField$CBorder.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CTextField$CBorder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CTextField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/CustomComponents/CTextField.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/Utility/WordGenerator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/GamePackage/GameContainer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractMenuPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractMenuPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractSubPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/AbstractSubPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/GameModeMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/GameModePanels/PlayerSettingsSubPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$ExitWindowEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$ExitWindowEvent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$StateChangeButtonEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer$StateChangeButtonEvent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuContainer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuState.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/MenuState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/ScoreboardMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsSubPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsSubPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/ScoreboardPanels/ScoreTableSubPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/ScoreboardPanels/ScoreTableSubPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/Window.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/ScoreboardPanels/ScoreboardMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/ScoreboardPanels/ScoreboardMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/SettingsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/SettingsPanels/SettingsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/AJP_Microproject/WindowPackage/MenuPackage/WordInputMenu.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomComponents/CLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CLabel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomComponents/CTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomComponents/CTextField.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Utility/WordGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Utility/WordGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/GamePackage/GameContainer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractMenuPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractMenuPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractSubPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/AbstractSubPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/GameModePanels/PlayerSettingsSubPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsSubPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/MenuState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardPanels/ScoreboardMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsSubPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/PlayerSettingsPanels/PlayerSettingsSubPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardPanels/ScoreTableSubPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardPanels/ScoreTableSubPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/SettingsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WindowPackage/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardPanels/ScoreboardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/ScoreboardPanels/ScoreboardMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/SettingsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/SettingsPanels/SettingsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/WordInputMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowPackage/MenuPackage/WordInputPanels/WordInputMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,15 +75,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "D:/PROgraming/IdeaProjects/UIManagerDefaults",
-    "settings.editor.selected.configurable": "editor.preferences.gutterIcons"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/PROgraming/IdeaProjects/UIManagerDefaults&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;inlay.hints&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PROgraming\IdeaProjects\AJP_Microproject\Resources" />
@@ -114,14 +109,14 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="GridLayoutExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GridLayoutExample" />
-      <module name="AJP_Microproject" />
+      <module name="Hangman_in_swing" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="JTextFieldTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JTextFieldTest" />
-      <module name="AJP_Microproject" />
+      <module name="Hangman_in_swing" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -130,14 +125,14 @@
       <option name="ALTERNATIVE_JRE_PATH" value="openjdk-17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="AJP_Microproject" />
+      <module name="Hangman_in_swing" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="ThreadGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ThreadGame" />
-      <module name="AJP_Microproject" />
+      <module name="Hangman_in_swing" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

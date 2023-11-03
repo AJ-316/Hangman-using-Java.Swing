@@ -17,6 +17,10 @@ public class CLabel extends JLabel {
     public static final Color RED = new Color(216, 66, 66);
     public static final Color GREEN = new Color(81, 199, 90);
     public static final Color LIGHT_GRAY = new Color(167, 167, 167);
+    public static final Color ORANGE = new Color(250, 159, 101);
+    public static final Color CYAN = new Color(27, 180, 152);
+    public static final Color PINK = new Color(243, 65, 101);
+    public static final Color PURPLE = new Color(122, 110, 242);
 
     private RolloverListener rolloverListener;
 

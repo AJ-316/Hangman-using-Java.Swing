@@ -42,31 +42,32 @@ public abstract class AbstractMenuPanel extends JPanel {
     }
 
     protected void addTitleText(String text) {
-        if(menuTitle == null) {
-            menuTitle = new CLabel();
-            Window.PANE.add(menuTitle);
-            menuTitle.setFont(UIManager.getFont("underlineLarge"));
-        }
-
-        menuTitle.setText(text);
-        menuTitle.setLocation(Window.WIDTH/2 - menuTitle.getPreferredSize().width/2, 50);
+        menuTitle = new CLabel();
+        Window.PANE.add(menuTitle);
+        menuTitle.setFont(UIManager.getFont("underlineLarge"));
+        setTitlePadding(50);
+        setTitleText(text);
     }
 
-    /**
-     * Add Sub panels to the menu panel with constraints
-     * @param constraintsArr <br/>[0]top, [1]bottom, [2]right, [3]left, [4]gridX, [5]gridY, [6]gridW
-     */
+    protected void setTitleText(String text) {
+        menuTitle.setText(text);
+        menuTitle.setLocation(Window.WIDTH/2 - menuTitle.getPreferredSize().width/2, menuTitle.getY());
+    }
 
-    protected void addSubPanel(AbstractSubPanel subPanel, int... constraintsArr) {
+    protected void setTitlePadding(int top) {
+        if(menuTitle == null) return;
+        menuTitle.setLocation(menuTitle.getX(), top);
+    }
+
+    protected void addSubPanel(AbstractSubPanel subPanel, int top, int bottom, int right, int left, int gridx, int gridy, int gridw) {
         GridBagConstraints constraints = new GridBagConstraints();
-        constraints.weightx = 0.5f;
-        constraints.weighty = 0.5f;
-        constraints.insets.set(constraintsArr[TOP], constraintsArr[LEFT],
-                constraintsArr[BOTTOM], constraintsArr[RIGHT]);
+        constraints.weightx = 0;
+        constraints.weighty = 0;
+        constraints.insets.set(top, left, bottom, right);
 
-        constraints.gridx = constraintsArr[GRID_X];
-        constraints.gridy = constraintsArr[GRID_Y];
-        constraints.gridwidth = constraintsArr[GRID_W];
+        constraints.gridx = gridx;
+        constraints.gridy = gridy;
+        constraints.gridwidth = gridw;
         add(subPanel, constraints);
     }
 

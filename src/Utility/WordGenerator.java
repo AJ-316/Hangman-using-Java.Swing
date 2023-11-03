@@ -130,6 +130,7 @@ public class WordGenerator {
 
         UIManager.put("large", large);
         UIManager.put("small", large.deriveFont(19f));
+        UIManager.put("small_alert", large.deriveFont(Font.BOLD, 22f));
         UIManager.put("regular", large.deriveFont(30f));
         UIManager.put("strikethrough", large.deriveFont(attributes));
 

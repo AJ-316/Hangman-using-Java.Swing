@@ -1,43 +1,37 @@
-package WindowPackage.MenuPackage;
+package WindowPackage.MenuPackage.WordInputPanels;
 
 import CustomComponents.CButton;
 import CustomComponents.CLabel;
 import CustomComponents.CTextField;
-import WindowPackage.GamePackage.GameContainer;
+import DocumentListeners.TextLengthUpdateListener;
+import WindowPackage.MenuPackage.AbstractMenuPanel;
 import WindowPackage.MenuPackage.MenuContainer.StateChangeButtonEvent;
+import WindowPackage.MenuPackage.MenuState;
+
+import javax.swing.*;
 
 public class WordInputMenu extends AbstractMenuPanel {
 
     private String[] playerNames;
 
-    private final CLabel playerInputLabel;
-    private final CTextField playerInputField;
+    private final WordInputSubPanel wordInputPanel;
 
     public WordInputMenu() {
         super();
         addTitleText("Round 1");
+        setTitlePadding(130);
 
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        constraints.gridwidth = 2;
-        constraints.insets.bottom = 50;
         CLabel hintLabel = new CLabel("Type the Word to be Guessed");
+        constraints.insets.top = 50;
         add(hintLabel, constraints);
-        constraints.insets.bottom = 0;
 
-        constraints.gridwidth = 1;
-        constraints.gridy = 1;
-        playerInputLabel = new CLabel("PLACE HOLDER", CLabel.YELLOW);
-        add(playerInputLabel, constraints);
-
-        constraints.gridx = 1;
-        playerInputField = new CTextField("Enter Word...");
-        add(playerInputField, constraints);
+        wordInputPanel = new WordInputSubPanel();
+        addSubPanel(wordInputPanel, 40, 20, 40, 40, 0, 1, 1);
 
         constraints.gridx = 0;
         constraints.gridy = 2;
-        constraints.gridwidth = 2;
-        constraints.insets.top = 50;
+        constraints.gridwidth = 3;
+        constraints.insets.top = 20;
         CButton startGameBtn = new CButton("Start Guessing");
         startGameBtn.addActionListener(new StateChangeButtonEvent(MenuState.GAME_START));
         add(startGameBtn, constraints);
@@ -48,12 +42,12 @@ public class WordInputMenu extends AbstractMenuPanel {
     }
 
     public void setRound(int playerIndex, int round) {
-        playerInputLabel.setText(playerNames[playerIndex] + ": ");
-        addTitleText("Round " + round);
+        wordInputPanel.setPlayerName(playerNames[playerIndex] + ":");
+        setTitleText("Round " + round);
     }
 
     public String getWord() {
-        return playerInputField.getText().toUpperCase().trim();
+        return wordInputPanel.getWord().toUpperCase().trim();
     }
 
     public int getPlayerCount() {

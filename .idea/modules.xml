@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AJP_Microproject.iml" filepath="$PROJECT_DIR$/AJP_Microproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hangman_in_swing.iml" filepath="$PROJECT_DIR$/Hangman_in_swing.iml" />
     </modules>
   </component>
 </project>

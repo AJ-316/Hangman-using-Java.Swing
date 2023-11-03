@@ -7,7 +7,7 @@ import WindowPackage.MenuPackage.MenuContainer;
 import WindowPackage.MenuPackage.MenuState;
 import WindowPackage.MenuPackage.ScoreboardPanels.ScoreTableSubPanel;
 import WindowPackage.MenuPackage.ScoreboardPanels.ScoreboardMenu;
-import WindowPackage.MenuPackage.WordInputMenu;
+import WindowPackage.MenuPackage.WordInputPanels.WordInputMenu;
 import WindowPackage.Window;
 
 import javax.swing.*;

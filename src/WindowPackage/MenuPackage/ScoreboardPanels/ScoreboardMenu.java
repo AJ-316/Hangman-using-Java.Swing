@@ -6,11 +6,14 @@ import WindowPackage.MenuPackage.MenuContainer;
 import WindowPackage.MenuPackage.PlayerSettingsPanels.PlayerSettingsMenu;
 import WindowPackage.MenuPackage.ScoreboardPanels.ScoreTableSubPanel;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 public class ScoreboardMenu extends AbstractMenuPanel {
 
     private final ScoreTableSubPanel scoreTable;
+
+    public static final Color[] PLAYER_COLORS = new Color[] {CLabel.PURPLE, CLabel.PINK, CLabel.ORANGE, CLabel.CYAN};
 
     public ScoreboardMenu() {
         super();
@@ -18,19 +21,6 @@ public class ScoreboardMenu extends AbstractMenuPanel {
 
         scoreTable = new ScoreTableSubPanel();
         addSubPanel(scoreTable, 100, 0, 0, 0, 0, 0, 0);
-
-        /*scoreTable.initTable(3, getPlayerLabels(new String[] {"P1", "P2"}));
-        scoreTable.setRound(1);
-        scoreTable.setPlayerScore("P1", "", true);
-        scoreTable.setPlayerScore("P2", "", false);
-        scoreTable.setRound(2);
-        scoreTable.setPlayerScore("P1", "", false);
-        scoreTable.setPlayerScore("P2", "", true);
-        scoreTable.setRound(3);
-        scoreTable.setPlayerScore("P1", "", false);
-        scoreTable.setPlayerScore("P2", "", true);
-
-        scoreTable.calcTotalScore();*/
     }
 
     public ScoreTableSubPanel getScoreTable() {
@@ -45,8 +35,8 @@ public class ScoreboardMenu extends AbstractMenuPanel {
     public ArrayList<CLabel> getPlayerLabels(String[] names) {
         ArrayList<CLabel> playerLabels = new ArrayList<>();
 
-        for (String name : names) {
-            CLabel label = new CLabel(name, CLabel.YELLOW);
+        for (int i = 0; i < names.length; i++) {
+            CLabel label = new CLabel(names[i], PLAYER_COLORS[i]);
             playerLabels.add(label);
         }
 
