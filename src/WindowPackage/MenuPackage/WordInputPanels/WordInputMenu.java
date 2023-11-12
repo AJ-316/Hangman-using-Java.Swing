@@ -3,7 +3,6 @@ package WindowPackage.MenuPackage.WordInputPanels;
 import CustomComponents.CButton;
 import CustomComponents.CLabel;
 import CustomComponents.CTextField;
-import DocumentListeners.TextLengthUpdateListener;
 import WindowPackage.MenuPackage.AbstractMenuPanel;
 import WindowPackage.MenuPackage.MenuContainer.StateChangeButtonEvent;
 import WindowPackage.MenuPackage.MenuState;
